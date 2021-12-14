@@ -1,0 +1,23 @@
+
+.imagen{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-top: 40px;
+}
+h1{
+    font-family: 'Calistoga';
+}
+u{
+    text-decoration: none;
+    border-bottom: 3px solid var(--ion-color-secondary);
+}
+
+#login{
+    border-radius: 20px;
+    height: 40px;
+    width: 250px;
+    margin: auto;
+    margin-top: 20px;
+    font-weight: bold;
+}

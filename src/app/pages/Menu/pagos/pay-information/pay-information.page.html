@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button (click)="goToHome()" fill="clear" slot="start">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <div class="ion-text-center">
+      <img color="secondary" class="imagen" (click)="goToHome()" src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="ion-text-center"><u>Pagos</u></h1>
+  <h2 class="ion-margin-start">Agregar forma de pago</h2>
+  <p class="ion-text-left ion-margin-start">Introduce una nueva forma de pago</p>
+
+  <h3 class="ion-margin-start">Número de la tarjeta</h3>
+  <ion-input type="number" class="numbertarjet ion-margin-start ion-text-center"></ion-input>
+  <br>
+  <h3 class="ion-text-left ion-margin-start">Nombre del titular de la tarjeta</h3>
+  <p class="ion-text-left ion-margin">Introudce el nombre tal y como aparece en la tarjeta</p>
+  <ion-input type="string" class="numbertarjet ion-margin-start ion-text-center"></ion-input>
+  <br>
+  <h3 class="ion-text-left ion-margin-start">Fecha de caducidad</h3>
+  <ion-input type="number" class="date ion-margin-start ion-text-center" max="12" min="1" placeholder="MM"></ion-input> 
+  <ion-input type="number" class="date ion-margin-start ion-text-center" max="2021" min="1900" placeholder="YYYY"></ion-input>
+  <br>
+  <br>
+  <br>
+  <h3 class="ion-text-left ion-margin-start">Código de seguridad(CVC)(CVC/CVV/CID)</h3>
+  <ion-input type="number" class="date ion-margin-start ion-text-center" placeholder="123"></ion-input> 
+  <br>
+  <br>
+  <p class="ion-margin ion-text-justify">Cuando añadas tarjetas o utilices el servicio Ciuda a mi mascota Pay, se podría enviar información sobre tu tarjeta, dispositivo, cuenta o ubicación a los emisores de tu tarjeta, con el fin de registrarla y prevenir posibles fraudes</p>
+
+  <ion-button (click)="goToPolitic()" fill="clear" class="ion-margin-top" size="small" color="secondary">
+    <u>Politica de privacidad de Cuida a mi mascota</u>
+  </ion-button>
+</ion-content>

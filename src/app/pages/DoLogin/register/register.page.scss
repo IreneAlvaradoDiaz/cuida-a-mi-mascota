@@ -1,0 +1,18 @@
+h1{
+    font-family: 'Calistoga';
+    font-size: 30px;
+}
+u{
+    text-decoration: none;
+    border-bottom: 3px solid var(--ion-color-secondary);
+}
+ion-button{
+    font-size: 20px;
+    font-weight: bold;
+}
+ion-input{
+    background-color: var(--ion-color-tertiary);
+    width: 80%;
+    border-radius: 20px;
+    color: var(--ion-color-secondary);
+}

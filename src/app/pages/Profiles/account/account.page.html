@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button class="ion-button" (click)="goToHome()" fill="clear" slot="start">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <div class="ion-text-center">
+      <img color="secondary" class="imagen" (click)="goToHome()"
+        src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="ion-text-center"><u>Perfil</u></h1>
+  <div class="ion-text-center">
+    <img src="{{usuario.photo}}">
+  </div>
+
+  <div>
+    <ion-grid fixed class="ion-margin-start">
+      <ion-row>
+        <ion-col size="6">Nombre:</ion-col>
+        <ion-col size="6">{{usuario.nombre}}</ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid fixed class="ion-margin-start">
+      <ion-row>
+        <ion-col size="6">Apellidos:</ion-col>
+        <ion-col size="6">{{usuario.apellidos}}</ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid fixed class="ion-margin-start">
+      <ion-row>
+        <ion-col size="6">Edad:</ion-col>
+        <ion-col size="6">{{usuario.edad}} años</ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid fixed class="ion-margin-start">
+      <ion-row>
+        <ion-col size="6">Email:</ion-col>
+        <ion-col size="6">{{usuario.email}}</ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid fixed class="ion-margin-start">
+      <ion-row>
+        <ion-col size="6">Teléfono:</ion-col>
+        <ion-col size="6">{{usuario.telefono}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+    
+  <h1 class="ion-text-center"><u>Tus anuncios</u></h1>
+  <ion-list>
+    <ion-card *ngFor="let t of adverts.getAdverts() | async">
+      <ion-item lines="none">
+        <ion-avatar slot="start" class="card ion-margin-top ion-margin-bottom">
+          <img class="avatar" src="../../assets/img/avatar-3637425_960_720.png" alt="">
+        </ion-avatar>
+        <ion-label class="ion-margin-start"><b>{{t.title}}</b></ion-label>
+        <ion-icon (click)="presentAlertConfirm(t)" name="trash" slot="end" size="20"></ion-icon>
+      </ion-item>
+      <ion-card-content>
+        {{t.description}}
+        <br>
+        <br>
+        <ion-icon slot="start" name="location" color="primary"></ion-icon> Málaga, Málaga
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "Cuida-a-tu-mascota",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

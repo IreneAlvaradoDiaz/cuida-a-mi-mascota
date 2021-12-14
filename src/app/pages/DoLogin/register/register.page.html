@@ -1,0 +1,39 @@
+<ion-content color="primary">
+  <h1 class="ion-text-center"><u>Registro</u></h1>
+  <br>
+  <h2 class="ion-margin-start">Nombre</h2>
+  <ion-input type="text"  class="ion-margin-start" [(ngModel)] = "user.nombre"></ion-input>
+ 
+  <h2  class="ion-margin-start">Apellidos</h2>
+  <ion-input type="text" class="ion-margin-start" [(ngModel)] = "user.apellidos"></ion-input>
+  
+  <h2 class="ion-margin-start">Edad</h2>
+  <ion-input type="number" class="ion-margin-start" [(ngModel)] = "user.edad"></ion-input>
+  
+  <h2 class="ion-margin-start">Sexo</h2>
+  <ion-input type="text" class="ion-margin-start" [(ngModel)] = "user.sexo"></ion-input>
+  
+  <h2 class="ion-margin-start">Teléfono</h2>
+  <ion-input type="number" class="ion-margin-start" [(ngModel)] = "user.telefono"></ion-input>
+  
+  <h2 class="ion-margin-start">Gmail</h2>
+  <ion-input type="email" class="ion-margin-start" [(ngModel)] = "user.email"></ion-input>
+  
+  <h2 class="ion-margin-start">Contraseña</h2>
+  <ion-input type="password" class="ion-margin-start" [(ngModel)] = "user.password"></ion-input>
+  
+  <h2 class="ion-margin-start">Imagen(src)</h2>
+  <ion-input type="text" class="ion-margin-start" [(ngModel)] = "user.photo"></ion-input>
+
+  <div class="ion-text-center">
+    <ion-button (click)="goToBack()" color="secondary" class="ion-margin-top">
+      Registrar
+    </ion-button>
+  </div>
+
+  <div class="ion-text-center">
+    <ion-button (click)="goBack()" color="secondary" fill="clear">
+      Volver
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button (click)="goToHome()" fill="clear" slot="start">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <div class="ion-text-center">
+      <img color="secondary" class="imagen" (click)="goToHome()" src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+  <h1 class="ion-text-center"><u>Pagos</u></h1><br>
+  <h3 class="ion-margin-start">Información bancaria</h3>
+  <p class="ion-text-left ion-margin-start">Aqui encontraras tu forma de pago predeterminada. Dando a editar puedes cambiar el orden o eliminar una forma de pago.</p>
+
+    <ion-item>
+      <ion-icon slot="start" name="card" color="primary"></ion-icon>
+      <ion-label class="font">
+        Mastercard Debito Joven
+        <p class="p">Mastercard ****8855</p>
+      </ion-label>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="card" color="primary"></ion-icon>
+      <ion-label class="font">
+        Mastercard Debito Joven
+        <p class="p">Mastercard ****8855</p>
+      </ion-label>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="card" color="primary"></ion-icon>
+      <ion-label class="font">
+        Mastercard Debito Joven
+        <p class="p">Mastercard ****8855</p>
+      </ion-label>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="card" color="primary"></ion-icon>
+      <ion-label class="font">
+        Mastercard Debito Joven
+        <p class="p">Mastercard ****8855</p>
+      </ion-label>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+    <ion-button (click)="goToPayInformation()" fill="clear" class="ion-margin-top" size="large" color="secondary">
+      Agregar forma de pago <ion-icon name="chevron-forward"></ion-icon>
+    </ion-button>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="goToPayToggle()">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>

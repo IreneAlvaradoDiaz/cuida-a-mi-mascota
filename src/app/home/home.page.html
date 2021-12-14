@@ -1,0 +1,175 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-menu-button id="menu" slot="start" menu="first"></ion-menu-button>
+      <div class="ion-text-center">
+        <img color="secondary" class="imagen"  src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="">
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <div  class="ion-text-center">
+    <ion-button id="anuncio" (click)="goToAdvert()" shape="round" fill="clear" color="warning" class="ion-margin-top ion-margin-bottom">
+      <b>¡Pon tu anuncio! <br>
+      <ion-icon slot="start" size="large" name="add-circle"></ion-icon></b>
+    </ion-button>
+  </div>
+
+  <h1 class="ion-margin-start">Publicaciones destacadas</h1>
+  
+  <ion-segment value="Recientes" color="primary" scrollable="true" mode="md" [(ngModel)] = "segmentModel">
+    <ion-segment-button value="Recientes">
+      <ion-label>Recientes</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="Destacados">
+      <ion-label>Destacados</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="Cercanos">
+      <ion-label>Cercanos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-card *ngIf="segmentModel == 'Recientes'" color="success">
+    <ion-item lines="none"  color="success">
+      <ion-avatar slot="start" class="card ion-margin-top ion-margin-bottom">
+        <img class="avatar" src="../../assets/img/head-659651_960_720.png" alt="">
+      </ion-avatar>
+      <ion-icon slot="end" size="small" name="star" color="primary" class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-half-outline" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+    </ion-item>
+    <ion-label class="ion-margin-start"><b>Juan López</b></ion-label>
+    <ion-card-content>
+      This is content, without any paragraph or header tags,
+      within an ion-card-content element      
+    </ion-card-content>
+    <ion-card-content>
+      <ion-icon slot="start" name="location" color="primary"></ion-icon>Málaga, Málaga
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card *ngIf="segmentModel == 'Destacados'" color="success">
+    <ion-item lines="none" color="success">
+      <ion-avatar slot="start" class="card ion-margin-top ion-margin-bottom">
+        <img class="avatar" src="../../assets/img/avatar-373-456325.png" alt="">
+      </ion-avatar>
+      <ion-icon slot="end" size="small" name="star" color="primary" class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+    </ion-item>
+    <ion-label class="ion-margin-start"><b>Sara Jiménez</b></ion-label>
+    <ion-card-content>
+      This is content, without any paragraph or header tags,
+      within an ion-card-content element      
+    </ion-card-content>
+    <ion-card-content>
+      <ion-icon slot="start" name="location" color="primary"></ion-icon>Málaga, Málaga
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="segmentModel == 'Cercanos'" color="success">
+    <ion-item lines="none" color="success">
+      <ion-avatar slot="start" class="card ion-margin-top ion-margin-bottom">
+        <img class="avatar" src="../../assets/img/avatar-3637425_960_720.png" alt="">
+      </ion-avatar>
+      <ion-icon slot="end" size="small" name="star" color="primary" class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+    </ion-item>
+    <ion-label class="ion-margin-start"><b>Elias Gonzalez</b></ion-label>
+    <ion-card-content>
+      This is content, without any paragraph or header tags,
+      within an ion-card-content element      
+    </ion-card-content>
+    <ion-card-content>
+      <ion-icon slot="start" name="location" color="primary"></ion-icon>Málaga, Málaga
+    </ion-card-content>
+  </ion-card>
+
+  <h1 class="ion-margin-start">¡Ellos te ayudaran!</h1>
+  
+  <ion-segment value="Recientes" color="primary" scrollable="true" mode="md" [(ngModel)] = "segmentModel2">
+    <ion-segment-button value="Recientes">
+      <ion-label>Recientes</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="Destacados">
+      <ion-label>Destacados</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="Cercanos">
+      <ion-label>Cercanos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-card *ngIf="segmentModel2 == 'Recientes'" color="success">
+    <ion-item lines="none" color="success">
+      <ion-avatar slot="start" class="card ion-margin-top ion-margin-bottom">
+        <img class="avatar" src="../../assets/img/head-659651_960_720.png" alt="">
+      </ion-avatar>
+      <ion-icon slot="end" size="small" name="star" color="primary" class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-half-outline" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+    </ion-item>
+    <ion-label class="ion-margin-start"><b>Juan López</b></ion-label>
+    <ion-card-content>
+      This is content, without any paragraph or header tags,
+      within an ion-card-content element      
+    </ion-card-content>
+    <ion-card-content>
+      <ion-icon slot="start" name="location" color="primary"></ion-icon>Málaga, Málaga
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card *ngIf="segmentModel2 == 'Destacados'" color="success">
+    <ion-item lines="none" color="success">
+      <ion-avatar slot="start" class="card ion-margin-top ion-margin-bottom">
+        <img class="avatar" src="../../assets/img/avatar-373-456325.png" alt="">
+      </ion-avatar>
+      <ion-icon slot="end" size="small" name="star" color="primary" class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+    </ion-item>
+    <ion-label class="ion-margin-start"><b>Sara Jiménez</b></ion-label>
+    <ion-card-content>
+      This is content, without any paragraph or header tags,
+      within an ion-card-content element      
+    </ion-card-content>
+    <ion-card-content>
+      <ion-icon slot="start" name="location" color="primary"></ion-icon>Málaga, Málaga
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="segmentModel2 == 'Cercanos'" color="success">
+    <ion-item lines="none" color="success">
+      <ion-avatar slot="start" class="card ion-margin-top ion-margin-bottom">
+        <img class="avatar" src="../../assets/img/avatar-3637425_960_720.png" alt="">
+      </ion-avatar>
+      <ion-icon slot="end" size="small" name="star" color="primary" class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+      <ion-icon slot="end" size="small" name="star-outline" color="primary"class="ion-no-margin"></ion-icon>
+    </ion-item>
+    <ion-label class="ion-margin-start"><b>Elias Gonzalez</b></ion-label>
+    <ion-card-content>
+      This is content, without any paragraph or header tags,
+      within an ion-card-content element      
+    </ion-card-content>
+    <ion-card-content>
+      <ion-icon slot="start" name="location" color="primary"></ion-icon>Málaga, Málaga
+    </ion-card-content>
+  </ion-card>
+</ion-content>
