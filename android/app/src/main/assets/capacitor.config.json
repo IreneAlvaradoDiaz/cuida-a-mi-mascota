@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "cuida-a-mi-mascota",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

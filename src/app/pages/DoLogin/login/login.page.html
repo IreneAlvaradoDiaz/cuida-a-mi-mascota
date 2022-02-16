@@ -1,0 +1,24 @@
+<ion-content color="primary" mode="ios" class="ion-text-center">
+  <div class="imagen">
+    <img src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="imagen pata">
+  </div>
+
+  <h1><u>Login</u></h1>
+  <ion-item id="login" color="tertiary" class="ion-text-center">
+    <ion-input color="secondary" type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+
+  <ion-item id="login" color="tertiary" class="ion-text-center">
+    <ion-input color="secondary" type="password" placeholder="Contraseña" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+  <ion-button (click)="goToHome()" color="secondary" class="ion-margin-top">
+    Acceder
+  </ion-button>
+  <br><br><br>
+  <p class="ion-margin-top" >¿Aún no tienes cuenta?</p>
+  <ion-button (click)="register()" color="secondary" fill="clear">
+    Registrarse
+  </ion-button>
+  
+</ion-content>

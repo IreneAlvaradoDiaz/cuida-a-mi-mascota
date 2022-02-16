@@ -1,0 +1,31 @@
+.imagen{
+    width: 50px;
+    height: 40px;
+    margin-left: -40px;
+}
+.home{
+    width: 58px;
+    height: 58px;
+    margin: -10px;
+}
+h1{
+    font-family: 'Calistoga';
+}
+u{
+    text-decoration: none;
+    border-bottom: 3px solid var(--ion-color-primary);
+}
+h2,h3{
+    font-weight: bold;
+}
+.numbertarjet{
+    background-color: var(--ion-color-tertiary);
+    width: 90vw;
+    border-radius: 10px;
+}
+.date{
+    background-color: var(--ion-color-tertiary);
+    border-radius: 10px;
+    width: 20vw;
+    float: left;
+}

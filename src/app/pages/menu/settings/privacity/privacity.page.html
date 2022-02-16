@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button class="ion-button" (click)="goToHome()" fill="clear" slot="start">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <div class="ion-text-center">
+      <img color="secondary" class="imagen" (click)="goToHome()" src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center">
+  <h1><u>Privacidad y Seguridad</u></h1><br>
+  
+  <ion-item lines="none">
+    <ion-button class="ajustes" (click)="goPrivacity()" fill="clear" color="secondary">
+      Politica de privacidad
+    </ion-button>
+    <ion-button class="ArrowSetting" (click)="goPrivacity()" fill="clear" slot="end">
+      <ion-icon name="chevron-forward-outline" color="secondary"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <p>Boletín</p>
+  <p class="p">Me gustaria recibir novedades y promociones de Cuida a mi Mascota via Email</p> <ion-checkbox checked="true"></ion-checkbox>
+  <p class="p">Me gustaria recibir novedades y promociones de Cuida a mi Mascota via SMS</p> <ion-checkbox checked="false"></ion-checkbox>
+  
+</ion-content>

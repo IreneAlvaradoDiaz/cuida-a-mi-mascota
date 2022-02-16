@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button slot="start" color="secondary">
+    </ion-back-button >
+    <div class="ion-text-center">
+      <img color="secondary" class="imagen" (click)="goToHome()" src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+  <h1 class="ion-text-center"><u>Pagos</u></h1><br>
+  <h3 class="ion-margin-start">Información bancaria</h3>
+  <p class="ion-text-left ion-margin-start">Aqui encontraras tu forma de pago predeterminada. Dando a editar puedes cambiar el orden o eliminar una forma de pago.</p>
+
+  <ion-list>
+     <ion-item *ngFor="let t of pays">
+      <ion-icon slot="start" name="card" color="primary"></ion-icon>
+      <ion-label class="font">
+        {{t.tipe}}
+        <p class="p">{{t.propiety}}</p>
+        <p class="p">{{t.number}}</p>
+      </ion-label>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+  </ion-list>
+
+    <ion-button (click)="goToPayInformation()" fill="clear" class="ion-margin-top mode" size="large" color="secondary">
+      Agregar forma de pago <ion-icon name="chevron-forward"></ion-icon>
+    </ion-button>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="goToPayToggle()">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>
