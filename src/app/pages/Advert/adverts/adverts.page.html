@@ -11,28 +11,44 @@
 </ion-header>
 
 <ion-content class="ion-text-center">
-  <h1><u>Publica tu anuncio</u></h1><br>
+  <h1 class="title"><u>Crea tu publicación</u></h1><br>
   <ion-icon slot="start" name="person-circle"></ion-icon>
 
-  <div class="ion-margin-start">
-    <ion-item *ngFor="let item of adverts" lines="none">
-      <img  class="foto" src="{{item}}" alt="">
-    </ion-item>
-  </div>
+  <ion-slides mode="ios" scrollbar="false">
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <div class="ion-margin-start foto" (click)="openCamera()">
+      <h1 *ngIf="!advert.photo" src="" class="addFoto" alt="">
+        <ion-icon slot="start" name="add"></ion-icon> Fotos
+      </h1>
+    </div>
+    <ion-slide *ngFor="let item of adverts">
+      <div class="ion-margin-start foto">
+        <img class="foto" src="{{item}}" alt="">
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="advert.photo">
     <ion-fab-button (click)="openCamera()">
       <ion-icon name="camera"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
   <h1 class="ion-text-left ion-margin-start">Titulo Publicación:</h1>
-  <ion-input type="text" placeholder="Nombre Publicación" class="ion-text-center ion-margin" [(ngModel)]="advert.title"></ion-input>
+  <ion-input type="text" class="ion-text-center ion-margin ion-input" [(ngModel)]="advert.title"></ion-input>
 
   <h1 class="ion-text-left ion-margin-start">Descripción:</h1>
-  <ion-textarea placeholder="Escribe la descripción de tu publicación" class="ion-text-left ion-margin description" [(ngModel)]="advert.description"></ion-textarea>
+  <ion-textarea class="ion-text-left ion-margin description" [(ngModel)]="advert.description"></ion-textarea>
 
-  <ion-button  (click)="saveAdverts()" expand="block" shape="round" color="secondary">
-    Guardar
+  <div class="price">
+    <ion-input placeholder="€/h-d" [(ngModel)]="advert.price"></ion-input>
+  </div>
+  
+  <h1 class="ion-text-left ion-margin-start"><p>Poner un precio: </p></h1>
+  
+
+  <ion-button class="btn" (click)="saveAdverts()" color="secondary">
+    <p class="text">Listo!</p>
   </ion-button>
 </ion-content>

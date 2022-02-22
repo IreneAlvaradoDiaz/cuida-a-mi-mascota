@@ -12,4 +12,5 @@ export interface Pet {
     chip:boolean;
     descripcion:string;
     cuidados:string;
+    edit?:boolean;
 }

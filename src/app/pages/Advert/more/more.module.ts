@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { MorePageRoutingModule } from './more-routing.module';
 
 import { MorePage } from './more.page';
+import { ComponentsModule } from 'src/app/components/componets.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     MorePageRoutingModule
   ],
   declarations: [MorePage]

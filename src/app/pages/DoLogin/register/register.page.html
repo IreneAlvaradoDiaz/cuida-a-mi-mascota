@@ -1,47 +1,55 @@
 <ion-content color="primary">
-  <h1 class="ion-text-center"><u>Registro</u></h1>
-  <br>
-  <h2 class="ion-margin-start">Nombre</h2>
-  <ion-input type="text"  class="ion-margin-start" [(ngModel)] = "user.nombre"></ion-input>
- 
-  <h2  class="ion-margin-start">Apellidos</h2>
-  <ion-input type="text" class="ion-margin-start" [(ngModel)] = "user.apellidos"></ion-input>
-  
-  <h2 class="ion-margin-start">Edad</h2>
-  <ion-input type="number" class="ion-margin-start" [(ngModel)] = "user.edad"></ion-input>
-  
-  <h2 class="ion-margin-start">Sexo</h2>
-  <ion-input type="text" class="ion-margin-start" [(ngModel)] = "user.sexo"></ion-input>
-  
-  <h2 class="ion-margin-start">Teléfono</h2>
-  <ion-input type="tel" class="ion-margin-start" [(ngModel)] = "user.telefono"></ion-input>
-  
-  <h2 class="ion-margin-start">Gmail</h2>
-  <ion-input type="email" class="ion-margin-start" [(ngModel)] = "user.email"></ion-input>
-  
-  <h2 class="ion-margin-start">Contraseña</h2>
-  <ion-input type="password" class="ion-margin-start" [(ngModel)] = "user.pass"></ion-input>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="1" (click)="goBack()">
+        <ion-button fill="clear"  size="large">
+          <ion-icon slot="start" name="arrow-undo-sharp"  color="secondary"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="10"><h1 class="ion-text-center"><u>Registro</u></h1></ion-col>
+    </ion-row>
+  </ion-grid>
+    <br>
+    <h2 class="ion-margin-start">Nombre</h2>
+    <ion-input type="text" class="ion-margin-start" [(ngModel)]="user.nombre"></ion-input>
 
-  <br>
-  <ion-button fill="clear" (click)="openCamera()" color="secondary">
-    <ion-icon slot="end" name="camera"></ion-icon> <b> Insertar foto de mascota: </b>
-  </ion-button>
+    <h2 class="ion-margin-start">Apellidos</h2>
+    <ion-input type="text" class="ion-margin-start" [(ngModel)]="user.apellidos"></ion-input>
 
-  <div class="ion-margin-start">
-    <ion-item *ngFor="let item of users" lines="none">
-      <img  class="foto" src="{{item}}" alt="">
-    </ion-item>
-  </div>  
+    <h2 class="ion-margin-start">Edad</h2>
+    <ion-input type="number" class="ion-margin-start" [(ngModel)]="user.edad"></ion-input>
 
-  <div class="ion-text-center">
-    <ion-button (click)="register()" color="secondary" class="ion-margin-top">
-      Continuar
+    <h2 class="ion-margin-start">Sexo</h2>
+    <ion-select class="ion-margin-start" [(ngModel)]="user.sexo">
+      <ion-select-option value="Mujer" mode="ios">Mujer</ion-select-option>
+      <ion-select-option value="Hombre" mode="ios">Hombre</ion-select-option>
+    </ion-select>
+
+    <h2 class="ion-margin-start">Teléfono</h2>
+    <ion-input type="tel" class="ion-margin-start" [(ngModel)]="user.telefono"></ion-input>
+
+    <h2 class="ion-margin-start">Gmail</h2>
+    <ion-input type="email" class="ion-margin-start" [(ngModel)]="user.email"></ion-input>
+
+    <h2 class="ion-margin-start">Contraseña</h2>
+    <ion-input type="password" class="ion-margin-start" [(ngModel)]="user.pass"></ion-input>
+    
+    <br>
+
+    <ion-button fill="clear" (click)="openCamera()" size="large"
+      style="font-family: calistoga; color: white; font-size: 24px;">
+      <ion-icon slot="end" name="camera"></ion-icon> <b> Insertar foto: </b>
     </ion-button>
-  </div>
 
-  <div class="ion-text-center">
-    <ion-button (click)="goBack()" color="secondary" fill="clear">
-      Volver
-    </ion-button>
-  </div>
+    <div class="ion-margin-start">
+      <ion-item *ngFor="let item of users" lines="none">
+        <img class="foto" src="{{item}}" alt="">
+      </ion-item>
+    </div>
+
+    <div class="ion-text-center">
+      <ion-button (click)="register()" size="large" color="secondary" class="oto ion-margin-bottom">
+        <h2 class="cj">LISTO!</h2>
+      </ion-button>
+    </div>
 </ion-content>

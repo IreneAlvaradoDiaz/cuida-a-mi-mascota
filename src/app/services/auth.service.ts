@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, User, UserCredential } from 'firebase/auth';
+import { FacebookAuthProvider, signInWithRedirect, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, User, UserCredential, signInWithPopup } from 'firebase/auth';
+
+const provider = new GoogleAuthProvider();
+const providerF = new FacebookAuthProvider()
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  
   user: User;
 
   constructor(private auth: Auth) { }
@@ -17,7 +20,6 @@ export class AuthService {
         return true;
       },
       error => {
-        console.error(error);
         return false;
       }
     );
@@ -41,4 +43,19 @@ export class AuthService {
   resetPass(email: string): Promise<void>{
     return sendPasswordResetEmail(this.auth, email);
   }
+
+  loginGoogle(): Promise<boolean>{
+    return signInWithPopup(this.auth, provider).then(
+      () => true,
+      () => false
+    );
+  }
+
+  loginFacebook(): Promise<boolean>{
+    return signInWithPopup(this.auth, providerF).then(
+      () => true,
+      () => false
+    );
+  }
+  
 }

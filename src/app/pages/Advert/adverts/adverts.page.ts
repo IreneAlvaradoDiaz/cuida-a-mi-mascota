@@ -15,7 +15,7 @@ export class AdvertsPage implements OnInit {
 
   imgUrl: string;
   adverts = [];
-  advert: Advert = {} as Advert;
+  advert: Advert = {rate: 0} as Advert;
   user: IUser = {} as IUser;
   users: IUser[];
 
@@ -24,7 +24,6 @@ export class AdvertsPage implements OnInit {
 
   ngOnInit() {
     this.userService.getUsers().subscribe((data) => {
-      console.log(data);
       this.users = data;
       this.user = this.users[0];
     });
@@ -36,11 +35,12 @@ export class AdvertsPage implements OnInit {
   
   async openCamera() {
     const foto = await this.photoService.takePicture();    
-    this.adverts.push('data:image/jpeg;base64,' + foto);
+    this.adverts.push(foto);
     this.advert.photo = this.adverts[0];
   }
 
   saveAdverts(){
+    this.advert.create_At = new Date;
     this.advert.idUser = this.users[0].userId;
     this.AdvertService.addAdvert(this.advert);
     this.router.navigateByUrl('/account');

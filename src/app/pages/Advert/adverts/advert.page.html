@@ -11,12 +11,9 @@
 </ion-header>
 
 <ion-content class="ion-text-center">
-  <h1><u>Publica tu anuncio</u></h1><br>
-  <ion-icon slot="start" name="person-circle"></ion-icon>
-
   <div class="ion-margin-start">
     <ion-item *ngFor="let item of adverts" lines="none">
-      <img  class="foto" src="{{item}}" alt="">
+      <img  class="foto" src="{{item.photo}}" alt="">
     </ion-item>
   </div>
 
@@ -26,13 +23,18 @@
     </ion-fab-button>
   </ion-fab>
 
+  <h1><u>Crea tu publicación</u></h1><br>
+  <ion-icon slot="start" name="person-circle"></ion-icon>
+  
   <h1 class="ion-text-left ion-margin-start">Titulo Publicación:</h1>
-  <ion-input type="text" placeholder="Nombre Publicación" class="ion-text-center ion-margin" [(ngModel)]="advert.title"></ion-input>
+  <ion-input type="text" class="ion-text-center ion-margin" [(ngModel)]="advert.title"></ion-input>
 
   <h1 class="ion-text-left ion-margin-start">Descripción:</h1>
-  <ion-textarea placeholder="Escribe la descripción de tu publicación" class="ion-text-left ion-margin description" [(ngModel)]="advert.description"></ion-textarea>
+  <ion-textarea class="ion-text-left description" inputmode="text" [(ngModel)]="advert.description"></ion-textarea>
 
-  <ion-button  (click)="saveAdverts()" expand="block" shape="round" color="secondary">
-    Guardar
+  <h1>Poner un precio</h1> <div class="price"><ion-input type="number" [(ngModel)]="advert.price"></ion-input>€/h-d</div>
+
+  <ion-button  (click)="saveAdverts()" size="large" color="secondary" class="oto ion-margin-top">
+    <h2 class="cj">Listo!</h2> 
   </ion-button>
 </ion-content>

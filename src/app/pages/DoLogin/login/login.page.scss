@@ -1,23 +1,80 @@
 
 .imagen{
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     margin: auto;
     margin-top: 40px;
 }
+
 h1{
-    font-family: 'Calistoga';
+    margin-top: -25px;
+    font-size: 46px;
+    margin-bottom: 50px;
 }
+
 u{
     text-decoration: none;
-    border-bottom: 3px solid var(--ion-color-secondary);
+    border-bottom: 3px solid var(--ion-color-secondary); 
 }
 
 #login{
     border-radius: 20px;
-    height: 40px;
-    width: 250px;
+    height: 50px;
+    width: 300px;
     margin: auto;
     margin-top: 20px;
     font-weight: bold;
+}
+
+ion-input{
+    background-color: #d7d7d9a1;
+    border-radius: 20px;
+    color: var(--ion-color-secondary);
+    font-size: 25px;
+}
+
+.cj{
+    margin-top: 0;
+    margin-bottom: 0;
+    color: var(--ion-color-tertiary);
+    font-size: 30px;
+}
+p, h1{
+    font-family: 'Calistoga';
+}
+p{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.line{
+    width: 150px;
+    border-bottom: 1px solid var(--ion-color-secondary); 
+    position: absolute;
+    margin-top: 30px;
+}
+.line2{
+    width: 150px;
+    border-bottom: 1px solid var(--ion-color-secondary); 
+    float: right;
+    margin-top: -25px;
+}
+.btnregister{
+    height: 20px;
+    font-weight: bold;
+}
+.btn{
+    width: 300px;
+    height: 50px;
+    font-size: 25px;
+    margin: 10px;
+}
+.icon{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+ion-grid{
+    width: 100vw;
+    height: 100vh;
 }

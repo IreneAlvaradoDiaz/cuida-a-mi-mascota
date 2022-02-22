@@ -63,7 +63,8 @@
     <ion-card *ngFor="let t of adverts">
       <ion-item lines="none">
         <ion-avatar slot="start" class="card ion-margin-top ion-margin-bottom">
-          <img class="avatar" src="{{t.photo}}" alt="">
+          <img class="avatar" *ngIf="t.photo != null" src="{{t.photo}}" alt="">
+          <img class="avatar" *ngIf="t.photo == null" src="../../assets/img/head-659651_960_720.png" alt="">
         </ion-avatar>
         <ion-label class="ion-margin-start"><b>{{t.title}}</b></ion-label>
         <ion-icon (click)="presentAlertConfirm(t)" name="trash" slot="end" size="20"></ion-icon>
@@ -77,5 +78,4 @@
     </ion-card>
   </ion-list>
 
-  
 </ion-content>

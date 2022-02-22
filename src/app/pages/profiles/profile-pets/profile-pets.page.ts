@@ -31,6 +31,7 @@ export class ProfilePetsPage implements OnInit {
       this.pets = data;
       this.pet = this.pets[0];
     })
+    this.pet.edit = false;
   }
 
   goToHome(){
@@ -40,4 +41,13 @@ export class ProfilePetsPage implements OnInit {
     this.petService.getPets();
   }
   
+  edit(){
+    this.pet.edit = true;
+  }
+
+  save(){
+    this.pet.edit = false;
+    this.userService.updatePet(this.pet)
+    
+  }
 }

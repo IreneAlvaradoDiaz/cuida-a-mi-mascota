@@ -1,4 +1,4 @@
-export interface IUser{
+export interface IUser {
     userId:string;
     photo?:string;
     nombre:string;
@@ -6,7 +6,7 @@ export interface IUser{
     sexo:string;
     email:string;
     edad:number;
-    pass:string;
+    pass?:string;
     telefono:number;
-    idUserFire?: string;
+    type: string;
 }

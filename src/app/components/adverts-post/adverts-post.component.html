@@ -1,0 +1,75 @@
+<ion-card class="sizeCard" color="success" *ngFor="let t of adverts">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item lines="none" color="success">
+          <ion-avatar slot="start" class="card ion-margin-top">
+            <img class="avatar" *ngIf="t.photo == null" src="../../assets/img/head-659651_960_720.png" alt="">
+            <img class="avatar" [src]="t.photo" alt="">
+          </ion-avatar>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <h1>{{t.title}}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5">
+        <ion-item lines="none" color="success" *ngIf="t.rate == null || t.rate == 0" class="stars">
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+        </ion-item>
+        <ion-item lines="none" color="success" *ngIf="t.rate == 1" class="stars">
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+        </ion-item>
+        <ion-item lines="none" color="success" *ngIf="t.rate == 2" class="stars">
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+        </ion-item>
+        <ion-item lines="none" color="success" *ngIf="t.rate == 3" class="stars">
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+        </ion-item>
+        <ion-item lines="none" color="success" *ngIf="t.rate == 4" class="stars">
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star-outline" color="primary" class="ion-no-margin"></ion-icon>
+        </ion-item>
+        <ion-item lines="none" color="success" *ngIf="t.rate == 5" class="stars">
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+          <ion-icon slot="end" size="large" name="star" color="primary" class="ion-no-margin"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5">
+        <ion-item lines="none" color="success" class="stars">
+          <h1 class="ion-text-center">{{t.nameUser.nombre}} <br> {{t.nameUser.apellidos}}</h1>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item lines="none" color="success">
+          <ion-icon slot="start" class="location-icon" name="location" color="primary"></ion-icon> <p class="location"> Málaga, Málaga </p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

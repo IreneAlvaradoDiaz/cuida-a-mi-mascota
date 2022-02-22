@@ -17,19 +17,16 @@ export class AccountPage implements OnInit {
   constructor(private router: Router, public advertService: AdvertService, public authService: AuthService, public alertController: AlertController, private userService: UserService) {}
 
   user: IUser = {} as IUser;
-  users: IUser[];
-  advert: Advert = {} as Advert
   adverts: Advert[];
 
   ngOnInit() {
     this.userService.getUsers().subscribe((data) => {
-      this.users = data;
-      this.user = this.users[0];
-    });
+      console.log(data)
+      this.user = data[0];
+    }, (err) => console.error(err));
 
     this.advertService.getAdverts().subscribe((data) => {
       this.adverts = data;
-      this.advert = this.adverts[0];
     })
 
 

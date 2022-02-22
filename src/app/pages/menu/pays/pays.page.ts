@@ -5,6 +5,7 @@ import { IUser } from 'src/app/model/iuser';
 import { PayService } from 'src/app/services/pay.service';
 import { UserService } from 'src/app/services/user.service';
 
+
 @Component({
   selector: 'app-pays',
   templateUrl: './pays.page.html',

@@ -16,7 +16,7 @@ dependencies {
     implementation project(':capacitor-status-bar')
     implementation "androidx.core:core:1.6.+"
 }
-
+apply from: "../../node_modules/com.paypal.cordova.mobilesdk/src/android/build.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()

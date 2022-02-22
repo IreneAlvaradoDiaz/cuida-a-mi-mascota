@@ -1,0 +1,28 @@
+h1{
+    font-size: 46px;
+}
+u{
+    text-decoration: none;
+    border-bottom: 3px solid var(--ion-color-secondary);   
+}
+h2{
+    font-size: 30px;
+}
+ion-input, ion-select{
+    background-color: #d7d7d9a1;
+    width: 90vw;
+    border-radius: 20px;
+    color: var(--ion-color-secondary);
+}
+.oto{
+    font-family: 'Calistoga';
+    font-weight: bold;
+    width: 200px;
+}
+.cj{
+    margin-top: 0;
+    margin-bottom: 0;
+    color: var(--ion-color-primary);
+    font-size: 30px;
+}
+

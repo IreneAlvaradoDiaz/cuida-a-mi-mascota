@@ -11,5 +11,26 @@
 </ion-header>
 
 <ion-content>
+  <h1 class="ion-text-center"> Publicaciones <u> destacadas </u></h1>
+
+  <ion-segment value="Recientes" color="primary" scrollable="true" mode="md" [(ngModel)]="segmentModel">
+    <ion-segment-button value="Recientes">
+      <ion-label>Recientes</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="Destacados">
+      <ion-label>Destacados</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="Cercanos">
+      <ion-label>Cercanos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <app-adverts-post (click)="goToInformation(advertsNear[0].id)" *ngIf="segmentModel == 'Recientes'" [adverts]="advertsNear"></app-adverts-post>
+  <app-adverts-post (click)="goToInformation(advertFilter[0].id)" *ngIf="segmentModel == 'Destacados'" [adverts]="advertFilter"></app-adverts-post>
+  <app-adverts-post (click)="goToInformation(advert[0].id)" *ngIf="segmentModel == 'Cercanos'" [adverts]="adverts"></app-adverts-post>
+  
+  
 
 </ion-content>

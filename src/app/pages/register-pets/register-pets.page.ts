@@ -44,7 +44,7 @@ export class RegisterPetsPage implements OnInit {
 
   async openCamera() {
     const foto = await this.photoService.takePicture();    
-    this.pets.push('data:image/jpeg;base64,' + foto);
+    this.pets.push(foto);
     this.pet.photo = this.pets[0];
   }
     

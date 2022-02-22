@@ -1,0 +1,26 @@
+<ion-content  color="primary" mode="ios" class="ion-text-center">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="1" (click)="goBack()">
+        <ion-button fill="clear"  size="large">
+          <ion-icon slot="start" name="arrow-undo-sharp"  color="secondary"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="10"><h1 class="ion-text-center"><u>Registro</u></h1></ion-col>
+    </ion-row>
+  </ion-grid>
+  <h1>¿Qué eres?</h1>
+
+  <div class="ion-text-center">
+    <div  class="ion-text-center">
+      <ion-button (click)="register('dueño')" fill="clear" class="btn">
+        <ion-img src="../../../../assets/img/Captura de pantalla 2022-02-16 153149.png"></ion-img>
+      </ion-button>
+    </div>
+   <div class="ion-text-center cuidador">
+     <ion-button (click)="register('cuidador')" fill="clear" class="btn">
+       <ion-img src="../../../../assets/img/Captura de pantalla 2022-02-16 153208.png"></ion-img>
+     </ion-button>
+   </div>
+  </div>
+</ion-content>

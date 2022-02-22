@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Advert } from 'src/app/model/advert';
+import { Comment } from 'src/app/model/comment';
 import { IUser } from 'src/app/model/iuser';
 import { AdvertService } from 'src/app/services/advert.service';
+import { CommentsService } from 'src/app/services/comments.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,29 +13,35 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./adverts-info.page.scss'],
 })
 export class AdvertsInfoPage implements OnInit {
-
-  imgUrl: string;
-  adverts = [];
-  advert: Advert = {} as Advert;
-  user: IUser = {} as IUser;
+  adverts: Advert[];
   users: IUser[];
+  advert: Advert = {} as Advert
+  comments: Comment[];
 
-  constructor(private router: Router, private AdvertService: AdvertService, private userService: UserService) { }
+  constructor(private router: Router, private commentService: CommentsService, public userService: UserService, public advertService: AdvertService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((data) => {
-      console.log(data);
-      this.users = data;
-      this.user = this.users[0];
-    });
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.AdvertService.getAdverts().subscribe((data) => {
-      this.adverts = data;
-      this.advert = this.adverts[0];
-    });
+    if(id != null){
+      this.advertService.getAdvert(id).subscribe((data) => {
+        this.advert = data;
+        console.log(this.advert)
+      }, err => console.error(err))
+    }
+
+    this.commentService.getComments().subscribe((data) => {
+      this.comments = data;
+    })
+
   }
+
 
   goToHome() {
     this.router.navigateByUrl('/home');
+  }
+
+  goToCreateComment(id:string){
+    this.router.navigateByUrl(`/comments/${id}`);
   }
 }
