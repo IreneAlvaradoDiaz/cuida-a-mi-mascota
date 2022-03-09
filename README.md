@@ -24,4 +24,3 @@ La valoración de las publicaciones se realiza a través de una media realizada 
 <img width="167" alt="image" src="https://user-images.githubusercontent.com/91321987/157540513-3286a83b-1799-4d0a-b1af-72929ab4b9ad.png">
 <img width="166" alt="image" src="https://user-images.githubusercontent.com/91321987/157540542-eacde35a-c01e-40d4-9245-313b8a077adb.png">
 
-
