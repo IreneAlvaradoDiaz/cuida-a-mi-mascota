@@ -1,4 +1,13 @@
 {
+  "targets": {
+    "cuida-a-mi-mascota-fc036": {
+      "hosting": {
+        "app": [
+          "cuida-a-mi-mascota-fc036"
+        ]
+      }
+    }
+  },
   "projects": {
     "default": "cuida-a-mi-mascota-fc036"
   }
