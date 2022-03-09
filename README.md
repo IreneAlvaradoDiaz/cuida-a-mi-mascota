@@ -3,9 +3,12 @@
 Esta es una aplicación con la cual podras contratar los servicios de un cuidador de animales cuando no puedas quedarte en casa cuidando a tus mascotas o porque necesita que alguien te lo cuide en ese momento. 
 En esta app podras ver los diferentes anuncios que ha subido el cuidador, además de que el cuidador podrá ver los anuncios de dueños buscando cuidadores. Esta aplicación valorará a cada usuario, además de comentar sobre ese usuario.
 
-Esta aplicación ha sido creada desde la forma de móvil del inspector de chrome, en un formato de Samsung Galaxy s20+, es posible que si se cambia el formato de visualización algunas de los estilos implementados no se vean correctamente.
+Esta aplicación ha sido creada desde la forma de móvil del inspector de chrome, en un formato de Samsung Galaxy s20 Ultra, es posible que si se cambia el formato de visualización algunas de los estilos implementados no se vean correctamente.
 
 <img width="161" alt="image" src="https://user-images.githubusercontent.com/91321987/157539359-16083353-8b09-40a0-8711-80c05911827a.png">
+Las opciones de acceder por facebook o google son totalmente accesibles, además de que si accedes pero no has tenido una cuenta anteriormente te redirige al registro para que ingreses tus datos menos la contraseña y el email.
+<img width="164" alt="image" src="https://user-images.githubusercontent.com/91321987/157540797-0aa7ea5a-cea8-4668-85c2-bfa429f9e227.png">
+<img width="161" alt="image" src="https://user-images.githubusercontent.com/91321987/157540851-d6a8bd6c-31e4-499e-9795-335f4b664453.png">
 <img width="161" alt="image" src="https://user-images.githubusercontent.com/91321987/157539482-e01c6573-afcb-4278-8962-d3afaa361ba5.png">
 <img width="162" alt="image" src="https://user-images.githubusercontent.com/91321987/157539558-1c493a1d-c1d1-4d8c-bc75-11e9dd71cc4b.png">
 <img width="161" alt="image" src="https://user-images.githubusercontent.com/91321987/157539621-28ea4a0a-d6d5-47e4-aebf-fa7c848c247f.png">
