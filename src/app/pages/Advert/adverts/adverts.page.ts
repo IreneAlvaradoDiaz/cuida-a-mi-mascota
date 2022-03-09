@@ -14,18 +14,15 @@ import { UserService } from 'src/app/services/user.service';
 export class AdvertsPage implements OnInit {
 
   imgUrl: string;
-  adverts = [];
-  advert: Advert = {rate: 0} as Advert;
+  advert: Advert = {rate: []} as Advert;
   user: IUser = {} as IUser;
-  users: IUser[];
 
   constructor(private router: Router,
     private photoService: PhotoService, private AdvertService: AdvertService, private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((data) => {
-      this.users = data;
-      this.user = this.users[0];
+    this.userService.getIUser().subscribe((data) => {
+      this.user = data[0];
     });
   }
 
@@ -34,14 +31,15 @@ export class AdvertsPage implements OnInit {
   }
   
   async openCamera() {
-    const foto = await this.photoService.takePicture();    
-    this.adverts.push(foto);
-    this.advert.photo = this.adverts[0];
+    const doPhoto = await this.photoService.takePicture();    
+    const uploadPhoto = await this.photoService.uploadFile(doPhoto, `Adverts/${this.user.nombre} ${this.user.apellidos}`);
+    this.advert.photo = uploadPhoto;
   }
 
   saveAdverts(){
     this.advert.create_At = new Date;
-    this.advert.idUser = this.users[0].userId;
+    this.advert.idUser = this.user.userId;
+    this.advert.nameUser = this.user;
     this.AdvertService.addAdvert(this.advert);
     this.router.navigateByUrl('/account');
   }

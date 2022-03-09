@@ -18,5 +18,13 @@
 	{
 		"pkg": "@capacitor/status-bar",
 		"classpath": "com.capacitorjs.plugins.statusbar.StatusBarPlugin"
+	},
+	{
+		"pkg": "@capacitor/storage",
+		"classpath": "com.capacitorjs.plugins.storage.StoragePlugin"
+	},
+	{
+		"pkg": "capacitor-gpay-plugin",
+		"classpath": "pro.sharks.capacitor.gpay.GPayNative"
 	}
 ]

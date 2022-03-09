@@ -11,7 +11,7 @@
 <ion-content>
 <ion-slides>
   <ion-slide>
-    <img class="photo" [src]="advert.photo" alt="">
+    <img class="photo" [src]="advert.photo ?? '../../assets/img/head-659651_960_720.png'" alt="">
   </ion-slide>
 </ion-slides>
 <h1 class="ion-text-center"><u>{{advert.title}}</u></h1>
@@ -19,7 +19,7 @@
 <ion-grid fixed>
   <ion-row>
     <ion-col size="6" class="ion-text-center"><h1 class="contact">¡Contáctame!</h1></ion-col>
-    <ion-col size="6" class="ion-text-center"><app-rate></app-rate></ion-col>
+    <ion-col size="6" class="ion-text-center"><app-rate [rate]="advert ? advert.rateAvg : 0"></app-rate></ion-col>
   </ion-row>
   <ion-row>
     <ion-col size="8">

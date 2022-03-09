@@ -5,8 +5,9 @@ export interface IUser {
     apellidos:string;
     sexo:string;
     email:string;
-    edad:number;
+    fechaNacimiento:string;
     pass?:string;
     telefono:number;
     type: string;
+    edit?:boolean;
 }

@@ -16,23 +16,34 @@
     <h2 class="ion-margin-start">Apellidos</h2>
     <ion-input type="text" class="ion-margin-start" [(ngModel)]="user.apellidos"></ion-input>
 
-    <h2 class="ion-margin-start">Edad</h2>
-    <ion-input type="number" class="ion-margin-start" [(ngModel)]="user.edad"></ion-input>
+    <h2 class="ion-margin-start">Fecha de nacimiento</h2>
+    <ion-input readonly="true" button="true" id="open-date-input" placeholder="Haz clic aquí" class="ion-margin-start" [value]="user.fechaNacimiento">
+      <ion-popover trigger="open-date-input" show-backdrop="false">
+        <ng-template>
+          <ion-datetime
+            #popoverDatetime
+            presentation="date"
+            (ionChange)="user.fechaNacimiento = formatDate(popoverDatetime.value) " 
+          ></ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-input>
 
     <h2 class="ion-margin-start">Sexo</h2>
     <ion-select class="ion-margin-start" [(ngModel)]="user.sexo">
       <ion-select-option value="Mujer" mode="ios">Mujer</ion-select-option>
       <ion-select-option value="Hombre" mode="ios">Hombre</ion-select-option>
+      <ion-select-option value="Hombre" mode="ios">Otro</ion-select-option>
     </ion-select>
 
     <h2 class="ion-margin-start">Teléfono</h2>
-    <ion-input type="tel" class="ion-margin-start" [(ngModel)]="user.telefono"></ion-input>
+    <ion-input type="number" class="ion-margin-start" [(ngModel)]="user.telefono"></ion-input>
 
-    <h2 class="ion-margin-start">Gmail</h2>
-    <ion-input type="email" class="ion-margin-start" [(ngModel)]="user.email"></ion-input>
+    <h2 class="ion-margin-start" *ngIf="!currentUser">Email</h2>
+    <ion-input type="email" *ngIf="!currentUser" class="ion-margin-start" [(ngModel)]="user.email"></ion-input>
 
-    <h2 class="ion-margin-start">Contraseña</h2>
-    <ion-input type="password" class="ion-margin-start" [(ngModel)]="user.pass"></ion-input>
+    <h2 class="ion-margin-start" *ngIf="!currentUser">Contraseña</h2>
+    <ion-input type="password" class="ion-margin-start" *ngIf="!currentUser" [(ngModel)]="user.pass"></ion-input>
     
     <br>
 
@@ -42,9 +53,7 @@
     </ion-button>
 
     <div class="ion-margin-start">
-      <ion-item *ngFor="let item of users" lines="none">
-        <img class="foto" src="{{item}}" alt="">
-      </ion-item>
+        <img class="foto" [src]="user.photo" alt="">
     </div>
 
     <div class="ion-text-center">

@@ -1,0 +1,5 @@
+ion-item{
+    &::part(native){
+        background-color: transparent !important;
+    }
+}

@@ -5,7 +5,6 @@ import { IUser } from 'src/app/model/iuser';
 import { PayService } from 'src/app/services/pay.service';
 import { UserService } from 'src/app/services/user.service';
 
-
 @Component({
   selector: 'app-pays',
   templateUrl: './pays.page.html',
@@ -21,7 +20,7 @@ export class PaysPage implements OnInit{
   constructor(public router: Router, private userService: UserService, private payService: PayService) { }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((data) => {
+    this.userService.getIUser().subscribe((data) => {
       this.users = data;
       this.user = this.users[0];
     });
@@ -38,8 +37,12 @@ export class PaysPage implements OnInit{
   goToPayToggle(){
     this.router.navigateByUrl('/pay-toggle');
   }
-  goToPayInformation(){
+  createFormPay(){
     this.router.navigateByUrl('/pay-information');
+  }
+
+  goToInformation(id: string){
+    this.router.navigateByUrl(`/pay-information/${id}`);
   }
   
 }

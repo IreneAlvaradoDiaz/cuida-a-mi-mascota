@@ -9,7 +9,6 @@
 </ion-header>
 
 <ion-content>
-  
   <div class="ion-text-center">
     <ion-button id="perfiles" (click)="goToProfile()" shape="round" fill="clear" color="warning"
       class="ion-margin-top ion-margin-bottom">
@@ -19,8 +18,6 @@
       class="ion-margin-top ion-margin-bottom ion-margin-start">
       <b>Perfil <br> Mascota</b>
     </ion-button>
-  </div>
-  <div class="ion-text-center">
     <ion-button id="anuncio" (click)="goToAdvert()" shape="round" fill="clear" color="warning"
       class="ion-margin-top ion-margin-bottom">
       <b>¡Pon tu anuncio! <br>
@@ -44,9 +41,9 @@
       <ion-label>Cercanos</ion-label>
     </ion-segment-button>
   </ion-segment>
-  <app-adverts-post (click)="goToInformation(advertsNear[0].id)" *ngIf="segmentModel == 'Recientes'" [adverts]="advertsNear"></app-adverts-post>
-  <app-adverts-post (click)="goToInformation(advertFilter[0].id)" *ngIf="segmentModel == 'Destacados'" [adverts]="advertFilter"></app-adverts-post>
-  <app-adverts-post (click)="goToInformation(advert[0].id)" *ngIf="segmentModel == 'Cercanos'" [adverts]="advert"></app-adverts-post>
+  <app-adverts-post (clickAdvert)="goToInformation($event)" *ngIf="segmentModel == 'Recientes'" [adverts]="advertRecent"></app-adverts-post>
+  <app-adverts-post (clickAdvert)="goToInformation($event)" *ngIf="segmentModel == 'Destacados'" [adverts]="advertFilter"></app-adverts-post>
+  <app-adverts-post (clickAdvert)="goToInformation($event)" *ngIf="segmentModel == 'Cercanos'" [adverts]="advertNear"></app-adverts-post>
   <ion-button (click)="goToFeature()" fill="clear" class="more">
     Ver más...
   </ion-button>
@@ -55,21 +52,31 @@
   <br>
   <h1 class="ion-margin-start ion-margin-top">¡Ellos te ayudaran!</h1>
 
-  <ion-segment value="Recientes" color="primary" scrollable="true" mode="md" [(ngModel)]="segmentModel2">
-    <ion-segment-button value="Recientes">
-      <ion-label>Recientes</ion-label>
-    </ion-segment-button>
-
-    <ion-segment-button value="Destacados">
-      <ion-label>Destacados</ion-label>
-    </ion-segment-button>
-
-    <ion-segment-button value="Cercanos">
-      <ion-label>Cercanos</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-
-  <ion-button (click)="goToFeature()" fill="clear" class="more">
-    Ver más...
-  </ion-button>
+  <div>
+    <ion-card class="advertPeopleNormal" color="success" *ngFor="let t of advertOther">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6">
+            <ion-item lines="none" color="success">
+              <ion-avatar slot="start" class="ion-margin-top photo">
+                <img class="photo" [src]="t.photo ?? '../../assets/img/head-659651_960_720.png'" alt="">
+              </ion-avatar>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <h1>{{t.title}}</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+          </ion-col>
+          <ion-col size="8">
+            <ion-item lines="none" color="success">
+              <ion-icon slot="start" class="location-icon" name="location" color="primary"></ion-icon> <p class="location"> {{t.location}} </p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
 </ion-content>

@@ -5,6 +5,7 @@ import { Advert } from '../model/advert';
 import { IUser } from '../model/iuser';
 import { Pet } from '../model/pet';
 import { AdvertService } from '../services/advert.service';
+import { AdvertsNotPremiumService } from '../services/adverts-not-premium.service';
 import { AuthService } from '../services/auth.service';
 import { PetService } from '../services/pet.service';
 import { UserService } from '../services/user.service';
@@ -19,26 +20,41 @@ export class HomePage implements OnInit{
   segmentModel = "Recientes";
   segmentModel2 = "Recientes";
   pet = {} as Pet;
-  user: IUser;
-  adverts: Advert[];
-  advert = [];
-  advertFilter = [];
-  advertsNear = [];  
+  user: IUser = {} as IUser;
+  adverts: Advert[] = [];
+  advertRecent: Advert;
+  advertFilter: Advert;
+  advertNear: Advert;
+  advertOther: Advert[];
 
-  constructor(public router: Router, private advertService: AdvertService, private userService: UserService, public authService: AuthService, private alertController: AlertController, private petService: PetService) {}
+  constructor(public router: Router, private advertService: AdvertService, private userService: UserService, public authService: AuthService, private alertController: AlertController, private petService: PetService, private advertNotPremium: AdvertsNotPremiumService) {}
   
   ngOnInit() {
-    this.userService.getUsers().subscribe((data) => {
+    this.userService.getIUser().subscribe((data) => {
       console.log(data)
       this.user = data[0];
+      console.log(this.user)
     }, (err) => console.error(err));
 
     this.advertService.getAllAdverts().then((data) => {
-      this.adverts = data;
-      this.advert[0] = this.adverts[Math.floor(Math.random()*this.adverts.length)];
-      this.advertsNear = this.advert.sort((a1 , a2) => (- a1.create_At - (- a2.create_At)));
-      this.advertFilter = this.adverts.filter(a => a.rate >= 4); 
+      this.adverts = data.sort((a1 , a2) => (- a1.create_At - (- a2.create_At)));
+      
+      if( this.adverts.length ) {
+        this.advertRecent = this.adverts[0]; // pedro
+
+        console.log(this.adverts);
+        const filtered = this.adverts.filter(a => a.rate[0] >= 4);
+        if( filtered.length ) this.advertFilter = filtered[Math.floor(Math.random()*(filtered.length - 1))];
+         
+        this.advertNear = this.adverts.sort((a1 , a2) => (- a1.create_At - (- a2.create_At)))[0];
+      }
+
     }, err => console.error(err))
+
+    this.advertNotPremium.getAdvertsFromStorage().then(data => {
+      console.log(data);
+      this.advertOther = data;
+    })
   }
 
   goToAdvert(){

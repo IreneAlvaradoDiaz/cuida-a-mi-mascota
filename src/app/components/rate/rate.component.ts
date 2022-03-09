@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Advert } from 'src/app/model/advert';
-import { AdvertService } from 'src/app/services/advert.service';
 
 @Component({
   selector: 'app-rate',
@@ -9,18 +7,12 @@ import { AdvertService } from 'src/app/services/advert.service';
 })
 export class RateComponent implements OnInit {
 
-  @Input() adverts: Advert[];
+  @Input() rate: number;
 
-  advert: Advert = {} as Advert;
-
-  constructor(private advertService: AdvertService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.advertService.getAdverts().subscribe(data => {
-      this.adverts = data;
-      this.adverts[0] = this.advert;
-      console.log(this.advert)
-    })
+
   }
 
 }

@@ -13,8 +13,12 @@ export class PayService {
 
   constructor(private firestore: Firestore, private authService: AuthService) { }
 
+//buscar manera de hacerlo con PAYPAL
+
   async addPay(pay: IPay){
-    await addDoc(collection(this.firestore, `users/${this.authService.getCurrentUser().uid}/Pay`), pay);
+    const newDoc = doc(collection(this.firestore, `users/${this.authService.getCurrentUser().uid}/Pay`));
+    pay.id = newDoc.id;
+    await setDoc(newDoc, pay);
   }
 
   getPays(): Observable<IPay[]>{

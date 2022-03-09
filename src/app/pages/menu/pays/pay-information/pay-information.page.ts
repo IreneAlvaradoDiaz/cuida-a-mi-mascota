@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IPay } from 'src/app/model/ipay';
 import { IUser } from 'src/app/model/iuser';
 import { PayService } from 'src/app/services/pay.service';
@@ -12,7 +12,15 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class PayInformationPage implements OnInit {
 
-  constructor(private router: Router, private payService: PayService, private userService: UserService) { }
+  constructor(private router: Router, private payService: PayService, private userService: UserService, private activatedRoute: ActivatedRoute) { 
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+
+    if(id != null) {
+      this.payService.getPay(id).subscribe(data => {
+        this.pay = data;
+      })
+    }
+  }
 
   pay = {} as IPay;
   pays: IPay[];
@@ -20,11 +28,12 @@ export class PayInformationPage implements OnInit {
   users: IUser[];
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((data) => {
+    this.userService.getIUser().subscribe((data) => {
       console.log(data);
       this.users = data;
       this.user = this.users[0];
     });
+
   }
 
   goToHome(){

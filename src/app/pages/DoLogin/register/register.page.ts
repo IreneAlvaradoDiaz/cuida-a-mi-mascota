@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { User } from 'firebase/auth';
 import { IUser } from 'src/app/model/iuser';
 import { AuthService } from 'src/app/services/auth.service';
 import { PhotoService } from 'src/app/services/photo.service';
 import { UserService } from 'src/app/services/user.service';
-import { RegisterSelectionPage } from '../register-selection/register-selection.page';
+import { format, parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-register',
@@ -13,15 +14,28 @@ import { RegisterSelectionPage } from '../register-selection/register-selection.
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  currentUser?: User;
 
-  constructor(private router: Router,private alertController: AlertController, private authService: AuthService, private activatedRoute: ActivatedRoute, private userService: UserService, private photoService: PhotoService) { }
+  constructor(private router: Router, private alertController: AlertController, private authService: AuthService, private activatedRoute: ActivatedRoute, private userService: UserService, private photoService: PhotoService) { }
   
   user: IUser = {} as IUser;
   users = [];
-  
+  cont = 0;
+  dateValue = "";
+
   ngOnInit() {
     const type = this.activatedRoute.snapshot.paramMap.get('type');
     this.user.type = type;
+
+    this.authService.logout();
+
+    this.currentUser = this.authService.getCurrentUser();
+
+    if( this.currentUser ){
+      this.user.email = this.currentUser.email;
+      this.user.nombre = this.currentUser.displayName;
+    }
+
     console.log(this.user)
   }
 
@@ -29,10 +43,10 @@ export class RegisterPage implements OnInit {
   pass: string;
   
   async register() {
-    if (!this.user.nombre || !this.user.apellidos || !this.user.edad || !this.user.email || !this.user.pass || !this.user.sexo || this.user.type == null) {
+    if (!this.user.nombre || !this.user.apellidos || !this.user.fechaNacimiento || (!this.currentUser && !this.user.email) || (!this.currentUser && !this.user.pass) || !this.user.sexo || this.user.type == null) {
       this.alerterror();
     } else {
-      if (await this.authService.register(this.user.email, this.user.pass)) {
+      if (this.currentUser || await this.authService.register(this.user.email, this.user.pass)) {
         this.userService.addUser(this.user);
         this.router.navigateByUrl('/login');
       } else {
@@ -46,9 +60,9 @@ export class RegisterPage implements OnInit {
   }
 
   async openCamera() {
-    const foto = await this.photoService.takePicture();
-    this.users.push(foto);
-    this.user.photo = this.users[0];
+    const doPhoto = await this.photoService.takePicture();    
+    const uploadPhoto = await this.photoService.uploadFile(doPhoto, `Users/${this.user.nombre}  ${this.user.apellidos}`);
+    this.user.photo = uploadPhoto;
   }
 
   async alerterror() {
@@ -68,5 +82,10 @@ export class RegisterPage implements OnInit {
     });
     await alert.present();
   }
+
+  formatDate(value: string) {
+    return format(parseISO(value), 'dd MMM yyyy');
+  }
+
 
 }

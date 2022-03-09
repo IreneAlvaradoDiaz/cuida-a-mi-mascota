@@ -60,3 +60,8 @@ ion-button{
     position: absolute;
     right: 0;
 }
+div{
+    ::part(native){
+        background-color: white;
+    }
+}

@@ -24,15 +24,19 @@ export class AdvertsInfoPage implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
 
     if(id != null){
-      this.advertService.getAdvert(id).subscribe((data) => {
-        this.advert = data;
-        console.log(this.advert)
-      }, err => console.error(err))
+      console.log(id)
+      this.advertService.getAdvert(id).then((data) => {
+        console.log(data)
+        if( data ){
+          this.advert = data;
+        } else this.goToHome();
+      }, err => console.error(err));
+
+      this.commentService.getComments(id).then(data => {
+        this.comments = data;
+      });
     }
 
-    this.commentService.getComments().subscribe((data) => {
-      this.comments = data;
-    })
 
   }
 

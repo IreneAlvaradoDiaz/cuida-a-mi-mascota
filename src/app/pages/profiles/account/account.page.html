@@ -13,58 +13,85 @@
 <ion-content>
   <h1 class="ion-text-center"><u>Perfil</u></h1>
   <div class="ion-text-center">
-    <img *ngIf="user.photo != null" src="{{user.photo}}">
-    <img *ngIf="user.photo == null" src=" https://png.pngtree.com/png-vector/20190623/ourlarge/pngtree-accountavataruser-blue-dotted-line-line-icon-png-image_1491314.jpg "> 
-  </div>
-  
+    <img *ngIf="!user.edit" [src]="user.photo ?? 'https://png.pngtree.com/png-vector/20190623/ourlarge/pngtree-accountavataruser-blue-dotted-line-line-icon-png-image_1491314.jpg'">
+    <img (click)="openCamera()"  *ngIf="user.edit"
+      [src]="user.photo ??  'https://png.pngtree.com/png-vector/20190623/ourlarge/pngtree-accountavataruser-blue-dotted-line-line-icon-png-image_1491314.jpg'">
+    </div>
+
 
   <div>
     <ion-grid fixed class="ion-margin-start">
       <ion-row>
         <ion-col size="6"><b>Nombre:</b></ion-col>
-        <ion-col size="6">{{user.nombre}}</ion-col>
+        <ion-col class="ion-col" size="6">
+          <ion-input class="info" *ngIf="!user.edit" readonly [value]="user.nombre"></ion-input>
+          <ion-input class="info" *ngIf="user.edit" [(ngModel)]="user.nombre" [value]="user.nombre"></ion-input>
+        </ion-col>
       </ion-row>
     </ion-grid>
 
     <ion-grid fixed class="ion-margin-start">
       <ion-row>
         <ion-col size="6"><b>Apellidos:</b></ion-col>
-        <ion-col size="6">{{user.apellidos}}</ion-col>
+        <ion-col class="ion-col" size="6">
+          <ion-input class="info" *ngIf="!user.edit" readonly [value]="user.apellidos"></ion-input>
+          <ion-input class="info" *ngIf="user.edit" [(ngModel)]="user.apellidos" [value]="user.apellidos"></ion-input>
+        </ion-col>
       </ion-row>
     </ion-grid>
 
     <ion-grid fixed class="ion-margin-start">
       <ion-row>
-        <ion-col size="6"><b>Edad:</b></ion-col>
-        <ion-col size="6">{{user.edad}} años</ion-col>
+        <ion-col size="6"><b>Fecha Nacimiento:</b></ion-col>
+        <ion-col class="ion-col" size="6">
+          <ion-input class="info" *ngIf="!user.edit" readonly [value]="edad()"></ion-input>
+        </ion-col>
       </ion-row>
     </ion-grid>
 
     <ion-grid fixed class="ion-margin-start">
       <ion-row>
         <ion-col size="6"><b>Email:</b></ion-col>
-        <ion-col size="6">{{user.email}}</ion-col>
+        <ion-col class="ion-col" size="6">
+          <ion-input class="info" *ngIf="!user.edit" readonly [value]="user.email"></ion-input>
+          <ion-input class="info" *ngIf="user.edit" [(ngModel)]="user.email" [value]="user.email"></ion-input>
+        </ion-col>
       </ion-row>
     </ion-grid>
 
     <ion-grid fixed class="ion-margin-start">
       <ion-row>
         <ion-col size="6"><b>Teléfono:</b></ion-col>
-        <ion-col size="6">{{user.telefono}}</ion-col>
+        <ion-col class="ion-col" size="6">
+          <ion-input class="info" *ngIf="!user.edit" readonly [value]="user.telefono"></ion-input>
+          <ion-input class="info" *ngIf="user.edit" [(ngModel)]="user.telefono" [value]="user.telefono"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid fixed class="ion-margin-start">
+      <ion-row>
+        <ion-col size="9" class="ss">
+          <a *ngIf="user.type == 'dueño'" (click)="registrarMascota()">Registrar mascota</a>
+        </ion-col>
+        <ion-col size="3">
+          <ion-button class="ion-text-right" *ngIf="!user.edit" (click)="edit()" color="secondary" fill="clear" shape="round">
+            Editar
+          </ion-button>
+          <ion-button class="btn" *ngIf="user.edit" (click)="save()" color="secondary">
+            Listo!
+          </ion-button>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>
 
-  <br>
-  <a (click)="registrarMascota()">Registrar mascota</a>
-  
   <h1 class="ion-text-center"><u>Tus anuncios</u></h1>
   <ion-list>
     <ion-card *ngFor="let t of adverts">
       <ion-item lines="none">
         <ion-avatar slot="start" class="card ion-margin-top ion-margin-bottom">
-          <img class="avatar" *ngIf="t.photo != null" src="{{t.photo}}" alt="">
-          <img class="avatar" *ngIf="t.photo == null" src="../../assets/img/head-659651_960_720.png" alt="">
+          <img class="avatar"  [src]="t.photo ?? '../../assets/img/head-659651_960_720.png'" alt="">
         </ion-avatar>
         <ion-label class="ion-margin-start"><b>{{t.title}}</b></ion-label>
         <ion-icon (click)="presentAlertConfirm(t)" name="trash" slot="end" size="20"></ion-icon>

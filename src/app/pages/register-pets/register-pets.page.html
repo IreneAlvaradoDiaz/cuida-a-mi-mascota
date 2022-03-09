@@ -32,8 +32,18 @@
   <p class="ion-margin-start"><b>Raza: </b></p>
   <ion-input type="text" [(ngModel)]="pet.raza"></ion-input>
 
-  <p class="ion-margin-start"><b>Edad: </b></p>
-  <ion-input type="number"[(ngModel)]="pet.edad"></ion-input>
+  <h2 class="ion-margin-start">Fecha de nacimiento</h2>
+    <ion-input readonly="true" button="true" id="open-date-input" placeholder="Haz clic aquí" class="ion-margin-start" [value]="pet.fechaNacimiento">
+      <ion-popover trigger="open-date-input" show-backdrop="false">
+        <ng-template>
+          <ion-datetime
+            #popoverDatetime
+            presentation="date"
+            (ionChange)="pet.fechaNacimiento = formatDate(popoverDatetime.value) " 
+          ></ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-input>
 
   <p class="ion-margin-start"><b>Sexo: </b></p>
   <ion-select [(ngModel)]="pet.sexo">
@@ -64,9 +74,7 @@
   </ion-button>
 
   <div class="ion-margin-start">
-    <ion-item *ngFor="let item of pets" lines="none">
-      <img  class="foto" src="{{item}}" alt="">
-    </ion-item>
+      <img  class="foto" [src]="pet.photo" alt="">
   </div>  
 
   <div class="ion-text-center">

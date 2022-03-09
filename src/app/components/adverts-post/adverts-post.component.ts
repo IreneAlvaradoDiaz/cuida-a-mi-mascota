@@ -1,10 +1,9 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Advert } from 'src/app/model/advert';
-import { IUser } from 'src/app/model/iuser';
 import { AdvertService } from 'src/app/services/advert.service';
 import { UserService } from 'src/app/services/user.service';
-import { EventEmitter } from 'stream';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-adverts-post',
@@ -13,20 +12,23 @@ import { EventEmitter } from 'stream';
 })
 export class AdvertsPostComponent implements OnInit {
   
-  @Input() adverts: Advert[];
+  @Input() adverts?: Advert[] | Advert;
 
-  @Output()
-  idOutput = new EventEmitter();
+  @Output() clickAdvert: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private router: Router, public userService: UserService, public advertService: AdvertService) { }
 
   ngOnInit() {
   }
 
-  sayToParent(message) {
-    
+  sayToParent(id: string) {
+    this.clickAdvert.emit(id);
   }
 
-  
+  getAdverts(){
+    if( this.adverts )
+      return Array.isArray(this.adverts) ? this.adverts : [this.adverts];
+    else return [];
+  }
 
 }

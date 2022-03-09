@@ -5,9 +5,7 @@ import { Pet } from 'src/app/model/pet';
 import { PetService } from 'src/app/services/pet.service';
 import { PhotoService } from 'src/app/services/photo.service';
 import { UserService } from 'src/app/services/user.service';
-
-
-
+import { format, parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-register-pets',
@@ -24,7 +22,7 @@ export class RegisterPetsPage implements OnInit {
   constructor(private petService: PetService, private userService: UserService, private router: Router, private photoService: PhotoService) { }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((data) => {
+    this.userService.getIUser().subscribe((data) => {
       console.log(data);
       this.users = data;
       this.user = this.users[0];
@@ -43,10 +41,13 @@ export class RegisterPetsPage implements OnInit {
   }
 
   async openCamera() {
-    const foto = await this.photoService.takePicture();    
-    this.pets.push(foto);
-    this.pet.photo = this.pets[0];
+    const doPhoto = await this.photoService.takePicture();    
+    const uploadPhoto = await this.photoService.uploadFile(doPhoto, `Pets/${this.pet.nombre} - ${this.user.nombre} ${this.user.apellidos}`);
+    this.pet.photo = uploadPhoto;
   }
-    
+
+  formatDate(value: string) {
+    return format(parseISO(value), 'dd MMM yyyy');
+  }    
 
 }

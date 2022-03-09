@@ -14,80 +14,91 @@
   <ion-slides>
     <ion-slide class="ion-text-left" *ngFor="let p of pets">
       <div class="ion-text-center foto">
-        <img *ngIf="p.photo == null" src="../../assets/img/1009293.png">
-        <img *ngIf="p.photo != null" src={{p.photo}}>
+        <img *ngIf="!pet.edit" [src]="pet.photo ?? 'https://png.pngtree.com/png-vector/20190623/ourlarge/pngtree-accountavataruser-blue-dotted-line-line-icon-png-image_1491314.jpg'">
+        <img (click)="openCamera()"  *ngIf="pet.edit"
+          [src]="pet.photo ??  'https://png.pngtree.com/png-vector/20190623/ourlarge/pngtree-accountavataruser-blue-dotted-line-line-icon-png-image_1491314.jpg'">
       </div>
 
       <ion-grid fixed class="ion-margin-start">
         <ion-row>
-          <ion-col size="6"><b>Nombre:</b></ion-col>
-          <ion-col size="6">
-            <ion-input class="info" readonly [value]="p.nombre"></ion-input>
+          <ion-col size="8"></ion-col>
+          <ion-col size="4" class="btn">
+            <div class="ion-text-center ion-margin">
+              <ion-button class="btn" *ngIf="!p.edit" (click)="edit()" color="secondary" fill="clear" shape="round">
+                Editar
+              </ion-button>
+              <ion-button class="btn" *ngIf="p.edit" (click)="save()" color="secondary">
+                Listo!
+              </ion-button>
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>
 
       <ion-grid fixed class="ion-margin-start">
         <ion-row>
-          <ion-col size="6"><b>Edad:</b></ion-col>
-          <ion-col size="6">
-            <ion-input class="info" readonly [value]="p.edad + ' años'"></ion-input>
+          <ion-col size="5"><b>Nombre:</b></ion-col>
+          <ion-col size="6" class="ion-col">
+            <ion-input class="info" *ngIf="!p.edit" readonly [value]="p.nombre"></ion-input>
+            <ion-input class="info" *ngIf="p.edit" [(ngModel)]="p.nombre" [value]="p.nombre"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      
+
+      <ion-grid fixed class="ion-margin-start">
+        <ion-row>
+          <ion-col size="5"><b>Edad:</b></ion-col>
+          <ion-col size="6" class="ion-col">
+            <ion-input class="info" *ngIf="!p.edit" readonly [value]="edad()"></ion-input>
           </ion-col>
         </ion-row>
       </ion-grid>
 
       <ion-grid fixed class="ion-margin-start">
         <ion-row>
-          <ion-col size="6"><b>Sexo:</b></ion-col>
-          <ion-col size="6">
-            <ion-input class="info" readonly [value]="p.sexo"></ion-input>
-          </ion-col>
+          <ion-col size="5"><b>Sexo:</b></ion-col>
+          <ion-col size="6" class="ion-col"> {{p.sexo}} </ion-col>
         </ion-row>
       </ion-grid>
 
       <ion-grid fixed class="ion-margin-start">
         <ion-row>
-          <ion-col size="6"><b>Tipo:</b></ion-col>
-          <ion-col size="6" *ngIf="!p.edit">
-            <ion-input class="info" readonly [value]="p.tipo"></ion-input>
-          </ion-col>
-          <ion-col size="6" *ngIf="p.edit">
-            <ion-input class="info" readonly=false [value]="p.tipo"></ion-input>
-          </ion-col>
+          <ion-col size="5"><b>Tipo:</b></ion-col>
+          <ion-col size="6" class="ion-col"> {{p.tipo}} </ion-col>
         </ion-row>
       </ion-grid>
 
       <ion-grid fixed class="ion-margin-start">
         <ion-row>
-          <ion-col size="6"><b>Raza:</b></ion-col>
-          <ion-col size="6">
-            <ion-input class="info" readonly [value]="p.raza"></ion-input>
-          </ion-col>
+          <ion-col size="5"><b>Raza:</b></ion-col>
+          <ion-col size="6" class="ion-col"> {{p.raza}} </ion-col>
         </ion-row>
       </ion-grid>
 
       <ion-grid fixed class="ion-margin-start">
         <ion-row>
-          <ion-col size="6"><b>Enfermedad:</b></ion-col>
-          <ion-col size="6" *ngIf="p.enfermedad">Si</ion-col>
-          <ion-col size="6" *ngIf="!p.enfermedad">No</ion-col>
+          <ion-col size="5"><b>Enfermedad:</b></ion-col>
+          <ion-col size="6" *ngIf="p.enfermedad"  class="ion-col"><ion-input class="info" readonly value="Si"></ion-input></ion-col>
+          <ion-col size="6" *ngIf="!p.enfermedad"  class="ion-col"><ion-input class="info" readonly value="No"></ion-input></ion-col>
         </ion-row>
       </ion-grid>
 
 
       <ion-grid fixed class="ion-margin-start">
         <ion-row>
-          <ion-col size="6"><b>Vacunas:</b></ion-col>
-          <ion-col size="6" *ngIf="p.vacunas">Si</ion-col>
-          <ion-col size="6" *ngIf="!p.vacunas">No</ion-col>
+          <ion-col size="5"><b>Vacunas:</b></ion-col>
+            <ion-col size="6" *ngIf="p.vacunas"  class="ion-col"><ion-input class="info" readonly value="Si"></ion-input></ion-col>
+            <ion-col size="6" *ngIf="!p.vacunas"  class="ion-col"><ion-input class="info" readonly value="No"></ion-input></ion-col>
         </ion-row>
       </ion-grid>
 
       <ion-grid fixed class="ion-margin-start">
         <ion-row>
-          <ion-col size="6"><b>Chip:</b></ion-col>
-          <ion-col size="6" *ngIf="p.chip">Si</ion-col>
-          <ion-col size="6" *ngIf="!p.chip">No</ion-col>
+          <ion-col size="5"><b>Chip:</b></ion-col>
+            <ion-col size="6" *ngIf="p.chip"  class="ion-col"><ion-input class="info" readonly value="Si"></ion-input></ion-col>
+            <ion-col size="6" *ngIf="!p.chip"  class="ion-col"><ion-input class="info" readonly value="No"></ion-input></ion-col>
         </ion-row>
       </ion-grid>
 
@@ -97,7 +108,10 @@
           <ion-col size="6"><b>Cuidados:</b></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col size="11" class="ion-text-left cuidados">{{p.cuidados}}</ion-col>
+          <ion-col size="11" class="ion-text-left cuidados">
+            <ion-textarea *ngIf="!p.edit" readonly [value]="p.cuidados"></ion-textarea>
+            <ion-textarea *ngIf="p.edit" [(ngModel)]="p.cuidados" [value]="p.cuidados"></ion-textarea>
+          </ion-col>
         </ion-row>
       </ion-grid>
 
@@ -106,19 +120,12 @@
           <ion-col size="6"><b>Descripción:</b></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col size="11" class="ion-text-left cuidados">{{p.descripcion}}</ion-col>
+          <ion-col size="11" class="ion-text-left cuidados">
+            <ion-textarea *ngIf="!p.edit" readonly [value]="p.descripcion"></ion-textarea>
+            <ion-textarea *ngIf="p.edit" [(ngModel)]="p.descripcion" [value]="p.descripcion"></ion-textarea>
+          </ion-col>
         </ion-row>
       </ion-grid>
-
-      <div class="ion-text-center ion-margin">
-        <ion-button class="btn" *ngIf="!p.edit" (click)="edit()" color="secondary" fill="clear" shape="round">
-          Editar
-        </ion-button>
-        <ion-button class="btn" *ngIf="p.edit" (click)="save()" color="secondary">
-          Listo!
-        </ion-button>
-      </div>
-
     </ion-slide>
   </ion-slides>
 </ion-content>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { IUser } from 'src/app/model/iuser';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -17,25 +18,25 @@ export class LoginPage implements OnInit {
   users: IUser[];
   user: IUser = {} as IUser
 
-  constructor(private router: Router, public alertController: AlertController, private authService: AuthService) { }
+  constructor(private router: Router, public alertController: AlertController, private authService: AuthService, private userService: UserService) { }
 
   ngOnInit() {
   }
- 
-  register(){
+
+  register() {
     this.router.navigateByUrl('/register-selection');
   }
-  
-  async goToHome(){
+
+  async goToHome() {
     const current = await this.authService.login(this.email, this.password);
-    if(current) {
+    if (current) {
       this.router.navigateByUrl('home');
-    }else{
+    } else {
       this.alerterror();
     }
   }
 
-  async alerterror(){
+  async alerterror() {
     const alert = await this.alertController.create({
       header: 'Error de autentificación',
       message: 'Contrasña o email incorrecto, vuelve a introducirlos',
@@ -44,30 +45,34 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  async loginGoogle(){
-    if(!this.user.nombre || !this.user.apellidos || !this.user.edad || !this.user.email || !this.user.pass || !this.user.sexo || this.user.type == null){
-      this.router.navigateByUrl('/register-selection');
-    }else{
-      const current = await this.authService.loginGoogle();
-      if(current) {
-        this.router.navigateByUrl('/home');
-      }else{
-        this.alerterror();
-      }
+  async loginGoogle() {
+    const current = await this.authService.loginGoogle();
+    if (current) {
+      console.log(this.authService.getCurrentUser());
+      this.userService.getIUser().subscribe(data => {
+        if (data.length) this.router.navigateByUrl('/home');
+        else this.router.navigateByUrl('/register-selection');
+      });
+    } else {
+      this.alerterror();
     }
-    
+
   }
 
-  async loginFacebook(){
+  async loginFacebook() {
     const current = await this.authService.loginFacebook();
-    if(current) {
-      this.router.navigateByUrl('home');
-    }else{
+    if (current) {
+      console.log(this.authService.getCurrentUser());
+      this.userService.getIUser().subscribe(data => {
+        if (data.length) this.router.navigateByUrl('/home');
+        else this.router.navigateByUrl('/register-selection');
+      });
+    } else {
       this.alerterror();
     }
   }
 
-  resetPass(){
+  resetPass() {
     this.authService.resetPass(this.email).then(
       () => {
         this.alertResetPassword();
@@ -78,7 +83,7 @@ export class LoginPage implements OnInit {
     );
   }
 
-  async alertResetPassword(){
+  async alertResetPassword() {
     const alert = await this.alertController.create({
       header: 'Recuperación de contraseña correcto',
       message: `Se le ha enviado al correo ${this.email} el enlace que le permitirá recuerar la contraseña`,
@@ -88,7 +93,7 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  async alertError(){
+  async alertError() {
     const alert = await this.alertController.create({
       header: 'Recuperación de contraseña Incorrecto',
       message: 'No se ha podido enviar un correo para reestablecer la contraseña. Inténtalo más tarde',

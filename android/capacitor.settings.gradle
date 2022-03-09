@@ -16,3 +16,9 @@ project(':capacitor-keyboard').projectDir = new File('../node_modules/@capacitor
 
 include ':capacitor-status-bar'
 project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacitor/status-bar/android')
+
+include ':capacitor-storage'
+project(':capacitor-storage').projectDir = new File('../node_modules/@capacitor/storage/android')
+
+include ':capacitor-gpay-plugin'
+project(':capacitor-gpay-plugin').projectDir = new File('../node_modules/capacitor-gpay-plugin/android')

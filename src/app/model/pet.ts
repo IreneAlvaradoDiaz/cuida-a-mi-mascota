@@ -5,8 +5,8 @@ export interface Pet {
     photo:string;
     tipo:string;
     raza:string;
-    edad:number;
     sexo:string;
+    fechaNacimiento:string;
     enfermedad:boolean;
     vacunas:boolean;
     chip:boolean;

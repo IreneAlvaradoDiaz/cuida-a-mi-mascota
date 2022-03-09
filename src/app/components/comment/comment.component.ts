@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import * as EventEmitter from 'events';
+import { Component, Input, OnInit } from '@angular/core';
 import { Advert } from 'src/app/model/advert';
 import { Comment } from 'src/app/model/comment';
 

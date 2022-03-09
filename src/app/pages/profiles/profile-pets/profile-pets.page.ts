@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { IUser } from 'src/app/model/iuser';
 import { Pet } from 'src/app/model/pet';
 import { PetService } from 'src/app/services/pet.service';
+import { PhotoService } from 'src/app/services/photo.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfilePetsPage implements OnInit {
 
-  constructor(public router: Router, public petService: PetService, private userService: UserService, private alertController: AlertController ) { }
+  constructor(public router: Router, private photoService: PhotoService, public petService: PetService, private userService: UserService, private alertController: AlertController ) { }
 
   user: IUser = {} as IUser;
   users: IUser[];
@@ -21,7 +22,7 @@ export class ProfilePetsPage implements OnInit {
   pets: Pet[];
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((data) => {
+    this.userService.getIUser().subscribe((data) => {
       console.log(data);
       this.users = data;
       this.user = this.users[0];
@@ -48,6 +49,22 @@ export class ProfilePetsPage implements OnInit {
   save(){
     this.pet.edit = false;
     this.userService.updatePet(this.pet)
-    
+  }
+
+  async openCamera() {
+    const doPhoto = await this.photoService.takePicture();    
+    const uploadPhoto = await this.photoService.uploadFile(doPhoto, `Pets/${this.pet.nombre} - ${this.user.nombre} ${this.user.apellidos}`);
+    this.pet.photo = uploadPhoto;
+  }
+
+  edad(): number{
+    const today: Date = new Date();
+    const birthDate: Date = new Date(Date.parse(this.pet.fechaNacimiento));
+    let age: number = today.getFullYear() - birthDate.getFullYear();
+    const month: number = today.getMonth() - birthDate.getMonth();
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
   }
 }

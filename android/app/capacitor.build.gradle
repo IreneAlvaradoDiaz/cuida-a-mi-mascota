@@ -14,6 +14,8 @@ dependencies {
     implementation project(':capacitor-haptics')
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-status-bar')
+    implementation project(':capacitor-storage')
+    implementation project(':capacitor-gpay-plugin')
     implementation "androidx.core:core:1.6.+"
 }
 apply from: "../../node_modules/com.paypal.cordova.mobilesdk/src/android/build.gradle"

@@ -15,7 +15,9 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { ComponentsModule } from './components/componets.module';
-import { AdvertsPostComponent } from './components/adverts-post/adverts-post.component';
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat';
+
 
 @NgModule({
   declarations: [AppComponent, MenuComponent],
@@ -23,6 +25,8 @@ import { AdvertsPostComponent } from './components/adverts-post/adverts-post.com
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebase),
     ComponentsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)), 
     provideAuth(() => getAuth()), 

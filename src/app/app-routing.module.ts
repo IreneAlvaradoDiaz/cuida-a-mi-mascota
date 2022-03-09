@@ -36,14 +36,13 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/DoLogin/login/login.module')
                         .then(m => m.LoginPageModule),
-                        // canActivate: [AuthGuard],
-                        // data: { AuthGuardPipe: redirectLoggedInToHome }
+                        data: { AuthGuardPipe: redirectLoggedInToHome }
   },
   {
     path: 'register/:type',
     loadChildren: () => import('./pages/DoLogin/register/register.module')
                         .then(m => m.RegisterPageModule),
-                        canActivate: [AuthGuard],
+                        canActivate: [],
                         data: { AuthGuardPipe: redirectLoggedInToHome }
   },
   {
@@ -76,6 +75,13 @@ const routes: Routes = [
   },
   {
     path: 'pay-information',
+    loadChildren: () => import('./pages/menu/pays/pay-information/pay-information.module')
+                        .then(m => m.PayInformationPageModule), 
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'pay-information/:id',
     loadChildren: () => import('./pages/menu/pays/pay-information/pay-information.module')
                         .then(m => m.PayInformationPageModule), 
                         canActivate: [AuthGuard],
@@ -120,7 +126,7 @@ const routes: Routes = [
     path: 'register-selection',
     loadChildren: () => import('./pages/DoLogin/register-selection/register-selection.module')
                         .then( m => m.RegisterSelectionPageModule),
-                        canActivate: [AuthGuard],
+                        canActivate: [],
                         data: { AuthGuardPipe: redirectLoggedInToHome }
   },
   {
