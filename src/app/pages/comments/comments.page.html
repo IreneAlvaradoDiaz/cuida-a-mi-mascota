@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button class="ion-button" (click)="goToHome()" fill="clear" slot="start">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <div class="ion-text-center">
+      <img color="secondary" class="imagen" (click)="goToHome()"
+        src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center">
+  <h1><u>Crea tu comentario</u></h1>
+
+  <div class="star">
+    <ionic-rating-component #rating activeIcon="star" defaultIcon="star-outline" halfIcon="strar-half" [halfStar] activeColor="#596CD9"
+      defaultColor="#596CD9" readonly="false" fontSize="35px" (ratingChanged)="onRatingChange($event)"
+      [(ngModel)]="comment.rate" class="ion-text-left ">
+    </ionic-rating-component>
+  </div>
+  
+  <p class="ion-text-left">Escribe tu comentario</p>
+
+  <ion-textarea [(ngModel)]="comment.description" class="ion-text-left"></ion-textarea>
+
+  <div class="ion-text-center">
+    <ion-button (click)="addComment()" size="large" color="secondary" class="oto ion-margin-bottom">
+      <h2 class="cj">LISTO!</h2>
+    </ion-button>
+  </div>
+
+</ion-content>

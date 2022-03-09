@@ -1,0 +1,74 @@
+h1{
+    color: var(--ion-color-secondary);
+    font-size: 20px;
+}
+
+ion-segment{
+  color: var(--ion-color-secondary);
+}
+
+ion-segment-button {
+  color: var(--ion-color-secondary);
+  &::part(native) {
+    color: var(--ion-color-secondary);
+  }
+}
+
+.avatar{
+  height: 100px;
+  width: 100px;
+  margin-left: 10px;
+}
+
+.card{
+  height: 100px;
+  width: 100px;
+}
+
+b{
+  margin-left: 5px;
+}
+
+.price{
+  background-color: var(--ion-color-success);
+  text-align: center;
+  height: 40px;
+  width: 80px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {display: none;}
+
+.sizeCard {
+  width: 85vw;
+  height: 65vw;
+  margin: auto;
+  margin-top: 30px;
+  border-radius: 40px;
+}
+
+.more{
+  position: absolute;
+  right: 0;
+}
+
+.stars{
+  margin-top: -15px;
+  margin-left: 15px;
+}
+
+h1{
+  font-family: 'Roboto';
+  font-size: 20px;
+}
+
+.location{
+  position: absolute;
+  right: 5px;
+  bottom: -5px;
+
+}
+
+.location-icon{
+  margin-right: 0px;
+}

@@ -8,9 +8,6 @@
     height: 58px;
     margin: -10px;
 }
-h1{
-    font-family: 'Calistoga';
-}
 u{
     text-decoration: none;
     border-bottom: 3px solid var(--ion-color-primary);
@@ -18,7 +15,7 @@ u{
 ion-col{
     margin-right: -40px;
 }
-ion-col:nth-child(2){
+.ion-col{
     text-align: center;
     background-color: var(--ion-color-tertiary);
     border-radius: 20px;
@@ -26,4 +23,16 @@ ion-col:nth-child(2){
 img{
     width: 150px;
     margin: 10px;
+}
+
+a{
+    font-weight: bold;
+}
+.ss{
+    margin-top: 15px;
+}
+
+.info{
+    height: 10px;
+    margin-top: 5px;
 }

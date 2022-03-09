@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']); //esto lo que hace es que cuando alguien no esta logeado e intenta ir a otro lado que no es el login lo mande ahí directamente
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
@@ -8,53 +12,134 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/DoLogin/login/login.module').then( m => m.LoginPageModule)
-  },
-  {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module')
+                    .then(m => m.HomePageModule),
+                    canActivate: [AuthGuard],
+                    data: { AuthGuardPipe: redirectUnauthorizedToLogin }
   },
   {
-    path: 'home/:id',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: 'adverts',
+    loadChildren: () => import('./pages/Advert/adverts/adverts.module')
+                        .then(m => m.AdvertsPageModule),
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
   },
   {
-    path: 'pagos',
-    loadChildren: () => import('./pages/Menu/pagos/pagos.module').then( m => m.PagosPageModule)
+    path: 'adverts-info/:id',
+    loadChildren: () => import('./pages/Advert/adverts-info/adverts-info.module')
+                        .then(m => m.AdvertsInfoPageModule),
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
   },
   {
-    path: 'idiomas',
-    loadChildren: () => import('./pages/Menu/idiomas/idiomas.module').then( m => m.IdiomasPageModule)
+    path: 'login',
+    loadChildren: () => import('./pages/DoLogin/login/login.module')
+                        .then(m => m.LoginPageModule),
+                        data: { AuthGuardPipe: redirectLoggedInToHome }
   },
   {
-    path: 'advert',
-    loadChildren: () => import('./pages/Adverts/advert/advert.module').then( m => m.AdvertPageModule)
+    path: 'register/:type',
+    loadChildren: () => import('./pages/DoLogin/register/register.module')
+                        .then(m => m.RegisterPageModule),
+                        canActivate: [],
+                        data: { AuthGuardPipe: redirectLoggedInToHome }
+  },
+  {
+    path: 'lenguages',
+    loadChildren: () => import('./pages/menu/lenguages/lenguages.module')
+                        .then(m => m.LenguagesPageModule),
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'pays',
+    loadChildren: () => import('./pages/menu/pays/pays.module')
+                        .then(m => m.PaysPageModule),
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'account',
-    loadChildren: () => import('./pages/Profiles/account/account.module').then( m => m.AccountPageModule)
+    loadChildren: () => import('./pages/profiles/account/account.module')
+                        .then(m => m.AccountPageModule),
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
   },
   {
-    path: 'privacity',
-    loadChildren: () => import('./pages/Menu/Settings/Privacity-Security/privacity/privacity.module').then( m => m.PrivacityPageModule)
-  },
-  {
-    path: 'politic',
-    loadChildren: () => import('./pages/Menu/Settings/Privacity-Security/politic/politic.module').then( m => m.PoliticPageModule)
-  },   {
-    path: 'pay-toggle',
-    loadChildren: () => import('./pages/Menu/pagos/pay-toggle/pay-toggle.module').then( m => m.PayTogglePageModule)
+    path: 'profile-pets',
+    loadChildren: () => import('./pages/profiles/profile-pets/profile-pets.module')
+                        .then(m => m.ProfilePetsPageModule), 
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'pay-information',
-    loadChildren: () => import('./pages/Menu/pagos/pay-information/pay-information.module').then( m => m.PayInformationPageModule)
+    loadChildren: () => import('./pages/menu/pays/pay-information/pay-information.module')
+                        .then(m => m.PayInformationPageModule), 
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
   },
   {
-    path: 'register',
-    loadChildren: () => import('./pages/DoLogin/register/register.module').then( m => m.RegisterPageModule)
+    path: 'pay-information/:id',
+    loadChildren: () => import('./pages/menu/pays/pay-information/pay-information.module')
+                        .then(m => m.PayInformationPageModule), 
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
   },
-
+  {
+    path: 'pay-toggle',
+    loadChildren: () => import('./pages/menu/pays/pay-toggle/pay-toggle.module')
+                        .then(m => m.PayTogglePageModule), 
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'more',
+    loadChildren: () => import('./pages/Advert/more/more.module')
+                        .then(m => m.MorePageModule), 
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'register-pets',
+    loadChildren: () => import('./pages/register-pets/register-pets.module')
+                        .then(m => m.RegisterPetsPageModule), 
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'politic',
+    loadChildren: () => import('./pages/menu/settings/politic/politic.module')
+                        .then(m => m.PoliticPageModule), 
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'privacity',
+    loadChildren: () => import('./pages/menu/settings/privacity/privacity.module')
+                        .then(m => m.PrivacityPageModule),
+                        canActivate: [AuthGuard],
+                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'register-selection',
+    loadChildren: () => import('./pages/DoLogin/register-selection/register-selection.module')
+                        .then( m => m.RegisterSelectionPageModule),
+                        canActivate: [],
+                        data: { AuthGuardPipe: redirectLoggedInToHome }
+  },
+  {
+    path: 'comments/:id',
+    loadChildren: () => import('./pages/comments/comments.module').then( m => m.CommentsPageModule)
+  },
+  {
+    path: '**', //si meten otra direccion de las que hemos creado le lleva directamente a la pagina principal y este a su vez si no esta logeado al login
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  
+  
 ];
 
 @NgModule({

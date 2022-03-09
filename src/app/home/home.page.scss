@@ -1,30 +1,3 @@
-#container {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);  
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
 .imagen{
   width: 50px;
   height: 40px;
@@ -40,6 +13,7 @@
   background-color: var(--ion-color-primary);
   font-family: var(--ion-font-family-Calistoga);
   box-shadow: 5px 5px 5px var(--ion-color-tertiary);
+  
 }
 #anuncio{
   height: 90px;
@@ -84,3 +58,32 @@ b{
 }
 
 ::-webkit-scrollbar {display: none;}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+}
+
+.sizeCard {
+  width: 94vw;
+  height: 62vw;
+  overflow: visible !important;
+  flex-shrink: 0;
+}
+.more{
+  position: absolute;
+  right: 0;
+}
+
+.advertPeopleNormal{
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.photo{
+  width: 120px;
+  height: 120px;
+}
+
+

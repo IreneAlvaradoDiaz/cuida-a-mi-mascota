@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button></ion-back-button>
+    <div class="ion-text-center">
+      <img color="secondary" class="imagen" (click)="goToHome()"
+        src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-slides>
+  <ion-slide>
+    <img class="photo" [src]="advert.photo ?? '../../assets/img/head-659651_960_720.png'" alt="">
+  </ion-slide>
+</ion-slides>
+<h1 class="ion-text-center"><u>{{advert.title}}</u></h1>
+
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="6" class="ion-text-center"><h1 class="contact">¡Contáctame!</h1></ion-col>
+    <ion-col size="6" class="ion-text-center"><app-rate [rate]="advert ? advert.rateAvg : 0"></app-rate></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="8">
+      <h1 class="ion-margin-start">Descripción</h1>
+    </ion-col>
+    <ion-col size="3" class="ion-text-center">
+      <div class="container">
+        <h1>{{advert.price}}€/h</h1>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<div class="description">
+  {{advert.description}}
+</div>
+
+<ion-button (click)="goToCreateComment(advert.id)" color="secondary" fill="clear">
+  <p>Añadir Comentario</p> 
+</ion-button>
+
+<h1 class="comments"><ion-icon name="chatbox-ellipses-outline" color="primary" slot="start" class="ion-margin-start"></ion-icon>Comentarios</h1>
+
+<app-comment [comments]="comments"></app-comment>
+
+
+</ion-content>

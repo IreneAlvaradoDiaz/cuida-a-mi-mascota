@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button class="ion-button" (click)="goToHome()" fill="clear" slot="start">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <div class="ion-text-center">
+      <img color="secondary" class="imagen" (click)="goToHome()"
+        src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="ion-text-center"> Publicaciones <u> destacadas </u></h1>
+
+  <ion-segment value="Recientes" color="primary" scrollable="true" mode="md" [(ngModel)]="segmentModel">
+    <ion-segment-button value="Recientes">
+      <ion-label>Recientes</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="Destacados">
+      <ion-label>Destacados</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="Cercanos">
+      <ion-label>Cercanos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <app-adverts-post (clickAdvert)="goToInformation($event)" *ngIf="segmentModel == 'Recientes'" [adverts]="adverts"></app-adverts-post>
+  <app-adverts-post (clickAdvert)="goToInformation($event)" *ngIf="segmentModel == 'Destacados'" [adverts]="advertFilter"></app-adverts-post>
+  <app-adverts-post (clickAdvert)="goToInformation($event)" *ngIf="segmentModel == 'Cercanos'" [adverts]="advertsNear"></app-adverts-post>
+</ion-content>

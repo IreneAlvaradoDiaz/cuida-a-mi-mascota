@@ -25,3 +25,12 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+
+@font-face {
+    font-family: Calistoga;
+    src: url(assets/fonts/Calistoga-Regular.ttf);
+}
+
+h1, h2{
+    font-family: 'Calistoga';
+}

@@ -1,74 +1,78 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { FirebaseApp } from '@angular/fire/app';
+import { Firestore } from '@angular/fire/firestore';
+import { query, where, addDoc, collection, deleteDoc, doc, setDoc, collectionGroup, FieldPath, getDocs } from 'firebase/firestore';
+import { promise } from 'protractor';
+import { collectionData, docData } from 'rxfire/firestore';
+import { Observable } from 'rxjs';
 import { Advert } from '../model/advert';
-import { Storage } from '@capacitor/storage';
+import { IUser } from '../model/iuser';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdvertService {
 
-  adverts: Advert[] = [];
-  advertCounter: number = 0;
+  constructor(private firestore: Firestore, private authService: AuthService) { }
 
-  constructor() {
-    this.getAdvertsFromStorage().then(data => this.adverts = data);
-    this.getAdvertsCounterFromStorage().then(data => this.advertCounter = data);
-   }
-
-  async saveAdverts(advert: Advert): Promise<boolean> {
-    if (advert.id == undefined) {
-      advert.id = this.advertCounter++;
-      this.adverts.push(advert)
-    } else {
-      this.deleteAdverts(advert.id);
-      this.adverts.push(advert);
-    }
-
-    await this.saveAdvertsIntoStorage();
-    await this.saveAdvertsCounterIntoStorage();
-
-    return true;
+  async addAdvert(advert: Advert) {
+    const newDoc = doc(collection(this.firestore, `users/${this.authService.getCurrentUser().uid}/Adverts`));
+    advert.id = newDoc.id;
+    await setDoc(newDoc, advert);
   }
 
-  deleteAdverts(id: number) {
-    this.adverts = this.adverts.filter(t => t.id != id);
-  }
   getAdverts(): Observable<Advert[]> {
-    return of(this.adverts);
+    return collectionData(collection(this.firestore, `users/${this.authService.getCurrentUser().uid}/Adverts`), { idField: 'id' }) as Observable<Advert[]>;
   }
 
-  getAdvert(id: number): Observable<Advert> {
-    const advert = this.adverts.filter(t => t.id === id)[0];
-    const newAdvert = Object.assign({}, advert)
-    return of(newAdvert);
+  getAdvert(id: string): Promise<Advert | null> {
+    return new Promise( resolve => {
+      (collectionData(query(collectionGroup(this.firestore, `Adverts`), where('id', "==", id)), { idField: 'id' }) as Observable<Advert[]>).subscribe( data => {
+        const advert = data.length ? data[0] : null;
+        console.log(data, id);
+
+        if( advert ){
+          (collectionData(query(collectionGroup(this.firestore, `iuser`), where("userId", "==", advert.idUser)), { idField: 'userId' }) as Observable<IUser[]>).subscribe( data => {
+            if( data.length ) advert.nameUser = data[0];
+
+            resolve(advert);
+          });
+        } else resolve(null);
+      });
+    });
   }
 
-  async getAdvertsFromStorage(): Promise<Advert[]> {
-    const ret = await Storage.get({ key: 'adverts' });
-    return JSON.parse(ret.value) ? JSON.parse(ret.value): [];
+  async deleteAdvert(id: string) {
+    const docRef = doc(this.firestore, `users/${this.authService.getCurrentUser().uid}/Adverts/${id}`);
+    await deleteDoc(docRef);
   }
+  
+  // updateMyAdverts(advert: Advert){ (PROXIMAMENTE)
+  //   const docRef = doc(this.firestore, `users/${this.authService.getCurrentUser().uid}/Adverts/${advert.id}`);
+  //   setDoc(docRef, advert);
+  // }
 
-  async getAdvertsCounterFromStorage(): Promise<number> {
-    const tc = await Storage.get({ key: 'advertsCounter' }); //ponemos await cuando el metodo es una promesa u observable(?) ya que es un metodo que hace que esperemos por los resultados, entoces marcaremos que esperaremos a que tengamos el resultado para poder seguir con el resto del código.
-    console.log("advertsCounter: " + JSON.stringify(tc.value));
-    return Number.isInteger(+tc.value) ? +tc.value: 0; //poneindo un + se combierte de un string a un number
-  }
-
-  async saveAdvertsIntoStorage(): Promise<boolean> {
-    await Storage.set({
-      key: 'adverts',
-      value: JSON.stringify(this.adverts),
+  updateAdverts(advert: Advert): Promise<void> {
+    return getDocs(query(collectionGroup(this.firestore, `Adverts`), where('id', "==", advert.id))).then(result => {
+      result.forEach(r => setDoc(r.ref, advert));
     })
-    return true;
   }
 
-  async saveAdvertsCounterIntoStorage(): Promise<boolean> {
-    await Storage.set({
-      key: 'advertsCounter',
-      value: '' + this.advertCounter,
-    })
+  getAllAdverts(): Promise<Advert[]> {
+    return new Promise( resolve => {
+      let users: {[key: string]: IUser} = {};
 
-    return true;
+      (collectionData(collectionGroup(this.firestore, `iuser`), { idField: 'userId' }) as Observable<IUser[]>).subscribe( data => {
+        data.forEach(u => users[u.userId] = u);
+
+        (collectionData(collectionGroup(this.firestore, `Adverts`), { idField: 'id' }) as Observable<Advert[]>).subscribe( data => {
+          resolve(data.map( a => {
+               return { nameUser: users[a.idUser], ...a }; // copiamos los campos dentro del anuncio
+            }));
+        });
+      });
+    });
   }
+
 }

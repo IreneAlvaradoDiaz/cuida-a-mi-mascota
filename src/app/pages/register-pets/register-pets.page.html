@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button class="ion-button" (click)="goToHome()" fill="clear" slot="start">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <div class="ion-text-center">
+      <img color="secondary" class="imagen" (click)="goToHome()"
+        src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <h1 class="ion-text-center"><u>Registro mascota</u></h1>
+
+  <br>
+
+  <p class="ion-margin-start"><b>Nombre: </b></p>
+  <ion-input type="text" [(ngModel)]="pet.nombre"></ion-input>
+
+  <p class="ion-margin-start"><b>Tipo de mascota: </b></p>
+  <ion-select [(ngModel)]="pet.tipo" >
+    <ion-select-option value="Perro" mode="ios">Perro</ion-select-option>
+    <ion-select-option value="Gato" mode="ios">Gato</ion-select-option>
+    <ion-select-option value="Caballo" mode="ios">Caballo</ion-select-option>
+    <ion-select-option value="Aves" mode="ios">Aves</ion-select-option>
+    <ion-select-option value="Reptiles" mode="ios">Reptiles</ion-select-option>
+    <ion-select-option value="Roedores" mode="ios">Roedores</ion-select-option>
+  </ion-select>
+
+  <p class="ion-margin-start"><b>Raza: </b></p>
+  <ion-input type="text" [(ngModel)]="pet.raza"></ion-input>
+
+  <h2 class="ion-margin-start">Fecha de nacimiento</h2>
+    <ion-input readonly="true" button="true" id="open-date-input" placeholder="Haz clic aquí" class="ion-margin-start" [value]="pet.fechaNacimiento">
+      <ion-popover trigger="open-date-input" show-backdrop="false">
+        <ng-template>
+          <ion-datetime
+            #popoverDatetime
+            presentation="date"
+            (ionChange)="pet.fechaNacimiento = formatDate(popoverDatetime.value) " 
+          ></ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-input>
+
+  <p class="ion-margin-start"><b>Sexo: </b></p>
+  <ion-select [(ngModel)]="pet.sexo">
+    <ion-select-option value="Hembra" mode="ios">Hembra</ion-select-option>
+    <ion-select-option value="Macho" mode="ios">Macho</ion-select-option>
+  </ion-select>
+
+  <p><b>¿Tiene alguna enfermedad?: </b>
+    <ion-toggle [(ngModel)]="pet.enfermedad" mode="ios"></ion-toggle>
+  </p>
+
+  <p><b>¿Tiene todas las vacunas?: </b>
+    <ion-toggle [(ngModel)]="pet.vacunas" mode="ios"></ion-toggle>
+  </p>
+  
+  <p><b>¿Tiene el chip?: </b>
+    <ion-toggle [(ngModel)]="pet.chip" mode="ios"></ion-toggle>
+  </p>
+
+  <p><b>Cuidados de la mascota: </b></p>
+  <ion-textarea [(ngModel)]="pet.cuidados"></ion-textarea>
+
+  <p><b>Descripcion de la mascota: </b></p>
+  <ion-textarea [(ngModel)]="pet.descripcion"></ion-textarea>
+
+  <ion-button fill="clear" (click)="openCamera()">
+    <ion-icon slot="end" name="camera"></ion-icon> <b> Insertar foto de mascota: </b>
+  </ion-button>
+
+  <div class="ion-margin-start">
+      <img  class="foto" [src]="pet.photo" alt="">
+  </div>  
+
+  <div class="ion-text-center">
+    <ion-button (click)="goToBack()" color="secondary" fill="clear">
+      Registrar Mascota
+    </ion-button>
+  </div>
+</ion-content>

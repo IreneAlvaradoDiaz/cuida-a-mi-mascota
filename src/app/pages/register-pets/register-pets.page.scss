@@ -1,0 +1,37 @@
+.imagen{
+    width: 50px;
+    height: 40px;
+    margin-left: -40px;
+}
+.ion-button{
+    width: 58px;
+    height: 58px;
+    margin: -10px;
+}
+p{
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+ion-textarea{
+    width: 90vw;
+    margin-left: 10px;
+}
+
+ion-input, ion-select{
+    margin-left: 10px;
+    background-color: #d7d7d996;
+    border-radius: 20px;
+    width: 90vw;
+    padding: 10px;
+}
+
+ion-icon{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+ion-toggle{
+    position: relative;
+    float: right;
+}

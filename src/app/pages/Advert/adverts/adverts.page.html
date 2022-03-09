@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button class="ion-button" (click)="goToHome()" fill="clear" slot="start">
+      <ion-icon name="arrow-back-outline" color="secondary"></ion-icon>
+    </ion-button>
+    <div class="ion-text-center">
+      <img color="secondary" class="imagen" (click)="goToHome()"
+        src="../../../assets/img/500_F_227375342_WnitNU3eerXDwuUORymudH4du9eNu8wH.png" alt="">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center">
+  <h1 class="title"><u>Crea tu publicación</u></h1><br>
+  <ion-icon slot="start" name="person-circle"></ion-icon>
+
+
+  <div class="ion-margin-start foto" *ngIf="!advert.photo" (click)="openCamera()">
+    <h1 class="addFoto">
+      <ion-icon slot="start" name="add"></ion-icon> Fotos
+    </h1>
+  </div>
+
+  <div class="ion-margin-start foto" *ngIf="advert.photo">
+    <h1 *ngIf="advert.photo">
+      <img class="foto" [src]="advert.photo" alt="">
+    </h1>
+  </div>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="advert.photo">
+    <ion-fab-button (click)="openCamera()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <h1 class="ion-text-left ion-margin-start">Titulo Publicación:</h1>
+  <ion-input type="text" class="ion-text-center ion-margin ion-input" [(ngModel)]="advert.title"></ion-input>
+
+  <h1 class="ion-text-left ion-margin-start">Descripción:</h1>
+  <ion-textarea class="ion-text-left ion-margin description" [(ngModel)]="advert.description"></ion-textarea>
+
+  <div class="price">
+    <ion-input placeholder="€/h-d" type="number" [(ngModel)]="advert.price"></ion-input>
+  </div>
+
+  <h1 class="ion-text-left ion-margin-start">
+    <p>Poner un precio: </p>
+  </h1>
+
+
+  <ion-button class="btn" (click)="saveAdverts()" color="secondary">
+    <p class="text">Listo!</p>
+  </ion-button>
+</ion-content>

@@ -1,11 +1,13 @@
 export interface IUser {
-    id:number;
+    userId:string;
     photo?:string;
     nombre:string;
     apellidos:string;
     sexo:string;
-    edad:number;
-    telefono:number;
     email:string;
-    password: number;
+    fechaNacimiento:string;
+    pass?:string;
+    telefono:number;
+    type: string;
+    edit?:boolean;
 }
