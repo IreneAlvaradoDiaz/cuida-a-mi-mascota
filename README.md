@@ -5,6 +5,8 @@ En esta app podras ver los diferentes anuncios que ha subido el cuidador, ademá
 
 Esta aplicación ha sido creada desde la forma de móvil del inspector de chrome, en un formato de Samsung Galaxy s20 Ultra, es posible que si se cambia el formato de visualización algunas de los estilos implementados no se vean correctamente.
 
+APK = https://drive.google.com/file/d/1syy69s-xp6EKlmPCcQY4G6-dbNjeNB2A/view?usp=sharing
+
 <img width="161" alt="image" src="https://user-images.githubusercontent.com/91321987/157539359-16083353-8b09-40a0-8711-80c05911827a.png">
 Las opciones de acceder por facebook o google son totalmente accesibles, además de que si accedes pero no has tenido una cuenta anteriormente te redirige al registro para que ingreses tus datos menos la contraseña y el email.
 <img width="164" alt="image" src="https://user-images.githubusercontent.com/91321987/157540797-0aa7ea5a-cea8-4668-85c2-bfa429f9e227.png">
