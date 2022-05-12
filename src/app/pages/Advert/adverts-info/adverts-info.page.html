@@ -9,40 +9,58 @@
 </ion-header>
 
 <ion-content>
-<ion-slides>
-  <ion-slide>
-    <img class="photo" [src]="advert.photo ?? '../../assets/img/head-659651_960_720.png'" alt="">
-  </ion-slide>
-</ion-slides>
-<h1 class="ion-text-center"><u>{{advert.title}}</u></h1>
+  <div *ngIf="contact == true" class="showContact" (click)="closeContact()">
+    <h1 class="title">¡Contáctame!</h1>
+    <div class="options">
+      <ion-grid fixed>
+        <!-- <ion-row> PROXIMAMENTE CHAT
+          <ion-col size="1"><ion-icon class="icon" name="chatbubble-ellipses-outline"></ion-icon></ion-col>
+          <ion-col size="11"><h1 style="color: var(--ion-color-tertiary); font-size: 40px;"> Mensaje</h1></ion-col>
+        </ion-row> -->
+        <ion-row>
+          <ion-col size="1"><ion-icon class="icon" name="phone-portrait"></ion-icon></ion-col>
+          <ion-col size="11"><h1 style="color: var(--ion-color-tertiary); font-size: 40px;" (click)="call(this.telephoneUser)"> Teléfono</h1></ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
 
-<ion-grid fixed>
-  <ion-row>
-    <ion-col size="6" class="ion-text-center"><h1 class="contact">¡Contáctame!</h1></ion-col>
-    <ion-col size="6" class="ion-text-center"><app-rate [rate]="advert ? advert.rateAvg : 0"></app-rate></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size="8">
-      <h1 class="ion-margin-start">Descripción</h1>
-    </ion-col>
-    <ion-col size="3" class="ion-text-center">
-      <div class="container">
-        <h1>{{advert.price}}€/h</h1>
-      </div>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-<div class="description">
-  {{advert.description}}
-</div>
+  <ion-slides>
+    <ion-slide >
+      <img class="photo" [src]="advert.photo ?? '../../assets/img/head-659651_960_720.png'" alt="">
+    </ion-slide>
+  </ion-slides>
+  <h1 class="ion-text-center"><u>{{advert.title}}</u></h1>
 
-<ion-button (click)="goToCreateComment(advert.id)" color="secondary" fill="clear">
-  <p>Añadir Comentario</p> 
-</ion-button>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="7" class="ion-text-center">
+        <ion-button (click)="openContact()" fill="clear" >
+          <h1 class="contact">¡Contáctame!</h1>
+        </ion-button>
+      </ion-col>
+      <ion-col size="5" class="ion-text-center"><app-rate [rate]="advert ? advert.rateAvg : 0"></app-rate></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8">
+        <h1 class="ion-margin-start">Descripción</h1>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+        <div class="container">
+          <h1>{{advert.price}}€/h</h1>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="description">
+    {{advert.description}}
+  </div>
 
-<h1 class="comments"><ion-icon name="chatbox-ellipses-outline" color="primary" slot="start" class="ion-margin-start"></ion-icon>Comentarios</h1>
+  <ion-button (click)="goToCreateComment(advert.id)" color="secondary" fill="clear">
+    <p>Añadir Comentario</p> 
+  </ion-button>
 
-<app-comment [comments]="comments"></app-comment>
+  <h1 class="comments"><ion-icon name="chatbox-ellipses-outline" color="primary" slot="start" class="ion-margin-start icon-comments"></ion-icon>Comentarios</h1>
 
-
+  <app-comment [comments]="comments"></app-comment>
 </ion-content>

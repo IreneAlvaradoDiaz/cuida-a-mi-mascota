@@ -48,7 +48,7 @@ export class ProfilePetsPage implements OnInit {
 
   save(){
     this.pet.edit = false;
-    this.userService.updatePet(this.pet)
+    this.petService.updatePet(this.pet)
   }
 
   async openCamera() {

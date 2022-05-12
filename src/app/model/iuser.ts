@@ -7,7 +7,7 @@ export interface IUser {
     email:string;
     fechaNacimiento:string;
     pass?:string;
-    telefono:number;
+    telefono:string;
     type: string;
     edit?:boolean;
 }

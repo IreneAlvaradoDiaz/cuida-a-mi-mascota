@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.cuidaamimascota.app;
 
 import com.getcapacitor.BridgeActivity;
 

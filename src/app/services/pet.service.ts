@@ -33,8 +33,9 @@ export class PetService {
   //   await deleteDoc(docRef);
   // }
 
-  updatePet(advert: Pet) {
-    const docRef = doc(this.firestore, `users/${this.authService.getCurrentUser().uid}/Pet/${advert.petId}`);
-    setDoc(docRef, advert);
-  }
+  updatePet(pet: Pet) {
+    const docRef = doc(this.firestore, `users/${this.authService.getCurrentUser().uid}/Pet/${pet.petId}`);
+    setDoc(docRef, pet);
+  }  
+
 }

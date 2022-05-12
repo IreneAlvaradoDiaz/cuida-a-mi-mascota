@@ -9,6 +9,7 @@ import { AdvertsNotPremiumService } from '../services/adverts-not-premium.servic
 import { AuthService } from '../services/auth.service';
 import { PetService } from '../services/pet.service';
 import { UserService } from '../services/user.service';
+import { AppLauncher } from '@capacitor/app-launcher';
 
 @Component({
   selector: 'app-home',
@@ -97,4 +98,10 @@ export class HomePage implements OnInit{
     await alert.present();
     this.router.navigateByUrl('/home');
   }
+
+  
+  async openApp(){
+    await AppLauncher.openUrl({ url: 'com.example.mipequeodiario' });
+  };
+
 }

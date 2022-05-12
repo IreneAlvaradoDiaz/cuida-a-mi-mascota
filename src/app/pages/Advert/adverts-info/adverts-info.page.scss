@@ -44,7 +44,7 @@ u{
     padding: 20px;
 }
 
-ion-icon{
+.icon-comments{
     position: absolute;
     font-size: 40px;
     left: -60px;
@@ -56,12 +56,37 @@ ion-icon{
     left: 60px;
 }
 
-ion-button{
-    position: absolute;
-    right: 0;
-}
 div{
     ::part(native){
         background-color: white;
     }
+}
+.showContact{
+    background-color: rgba(255, 255, 255, 0.707);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    text-align:center;
+    z-index: 3;
+}
+
+.options{
+    background-color: var(--ion-color-secondary);
+    height: 25vh;
+    width: 80vw;
+    border-radius: 20px;
+    margin: auto;
+}
+
+.title{
+    color: var(--ion-color-primary);
+    font-size: 40px;
+    margin: 20px;
+    margin-bottom: 80px;
+}
+
+.icon{
+    color: var(--ion-color-primary);
+    font-size: 60px;
+    margin: 10px;
 }

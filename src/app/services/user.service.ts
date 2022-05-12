@@ -25,19 +25,14 @@ export class UserService {
     {idField: 'userId'}) as Observable<IUser[]>;
   }
 
-  async deleteUser(id: string){
-    const docRef = doc(this.firestore, `users/${this.authService.getCurrentUser().uid}/iuser/${id}`);
-    await deleteDoc(docRef);
-  }
+  // async deleteUser(id: string){
+  //   const docRef = doc(this.firestore, `users/${this.authService.getCurrentUser().uid}/iuser/${id}`);
+  //   await deleteDoc(docRef);
+  // }
 
   updateUser(user: IUser) {
     const docRef = doc(this.firestore, `users/${this.authService.getCurrentUser().uid}/iuser/${user.userId}`);
     setDoc(docRef, user);
-  }  
-
-  updatePet(pet: Pet) {
-    const docRef = doc(this.firestore, `users/${this.authService.getCurrentUser().uid}/Pet/${pet.petId}`);
-    setDoc(docRef, pet);
   }  
 
 }
