@@ -31,7 +31,7 @@ https://www.figma.com/file/Jeaw5WQcTzZR0VBXKljMyi/Untitled?node-id=0%3A1
 APK: https://drive.google.com/file/d/1jXo-MqPAc_StfUPHrW1AaKcv_Qnr-7u6/view?usp=sharing
 
 Historico de cambios:
- · Hacer que cuando le de a ¡Contáctame!, salga la opción de llamar al usuario que ha subido el anuncio, al darle, llamará a dicho usuario.
+ · Hacer que cuando le de a ¡Contáctame!, salga la opción de llamar al usuario que ha subido el anuncio, al darle, llamará a dicho usuario. El fichero modificado se encuentra en: Pages/Adverts/advert-info/advert-info.ts y en el advert-info.html
  
  Cosas que me quedan por hacer:
   · Cambiar el rate, que sea con un for y no escrito a mano.
