@@ -1,5 +1,7 @@
 # Proyecto Final - Cuida a mi mascota
 
+# LOS CAMBIOS REALZADOS SE ENCUENTRA EN LA RAMA MASTER NO MAIN
+
 Esta aplicación va dirigida para aquellas personas que por motivos personales no puedan cuidar temporarmente a sus mascotas, ya sea por trabajo o por motivos personales. También para aquellas personas que son amantes de los animales, de esta manera tendrán la oportunidad de cuidar durante el tiempo requerido a dichas mascotas. 
 
 Muchos de los dueños no están corforme con los cuidados brindados a sus mascotas en las guarderías especializadas, ya que una gran parte muestra su desagrado con el trato que han recibido sus mascotas, ya que consideran que han vuelto a casa en malas condiciones, incluso con heridas por peleas entre animales. También muchos dueños tienen la preocupación porque piensan que sus mascotas no han sido atendidas durante las 24 horas, si no que estos animales son dejados solos en jaulas encerrados durante horas.
