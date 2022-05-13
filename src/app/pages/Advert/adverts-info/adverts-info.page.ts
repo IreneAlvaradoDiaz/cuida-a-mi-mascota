@@ -53,7 +53,7 @@ export class AdvertsInfoPage implements OnInit {
     this.contact = false;
   }
 
-  call(telephone: string){
+  call(telephone: string){//con este método se podrá llamar al usuario que ha publicado el anuncio
     this.callNumber.callNumber(telephone, true);
   }
 
