@@ -21,13 +21,8 @@
     <ion-segment-button value="Destacados">
       <ion-label>Destacados</ion-label>
     </ion-segment-button>
-
-    <ion-segment-button value="Cercanos">
-      <ion-label>Cercanos</ion-label>
-    </ion-segment-button>
   </ion-segment>
 
   <app-adverts-post (clickAdvert)="goToInformation($event)" *ngIf="segmentModel == 'Recientes'" [adverts]="adverts"></app-adverts-post>
   <app-adverts-post (clickAdvert)="goToInformation($event)" *ngIf="segmentModel == 'Destacados'" [adverts]="advertFilter"></app-adverts-post>
-  <app-adverts-post (clickAdvert)="goToInformation($event)" *ngIf="segmentModel == 'Cercanos'" [adverts]="advertsNear"></app-adverts-post>
 </ion-content>

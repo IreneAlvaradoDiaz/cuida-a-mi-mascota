@@ -19,6 +19,20 @@ const routes: Routes = [
                     data: { AuthGuardPipe: redirectUnauthorizedToLogin }
   },
   {
+    path: 'account',
+    loadChildren: () => import('./pages/profiles/account/account.module')
+                    .then(m => m.AccountPageModule),
+                    canActivate: [AuthGuard],
+                    data: { AuthGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
+    path: 'profile-pets',
+      loadChildren: () => import('./pages/profiles/profile-pets/profile-pets.module')
+                    .then(m => m.ProfilePetsPageModule),
+                    canActivate: [AuthGuard],
+                    data: { AuthGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
     path: 'adverts',
     loadChildren: () => import('./pages/Advert/adverts/adverts.module')
                         .then(m => m.AdvertsPageModule),
@@ -44,55 +58,6 @@ const routes: Routes = [
                         .then(m => m.RegisterPageModule),
                         canActivate: [],
                         data: { AuthGuardPipe: redirectLoggedInToHome }
-  },
-  {
-    path: 'lenguages',
-    loadChildren: () => import('./pages/menu/lenguages/lenguages.module')
-                        .then(m => m.LenguagesPageModule),
-                        canActivate: [AuthGuard],
-                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
-  },
-  {
-    path: 'pays',
-    loadChildren: () => import('./pages/menu/pays/pays.module')
-                        .then(m => m.PaysPageModule),
-                        canActivate: [AuthGuard],
-                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
-  },
-  {
-    path: 'account',
-    loadChildren: () => import('./pages/profiles/account/account.module')
-                        .then(m => m.AccountPageModule),
-                        canActivate: [AuthGuard],
-                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
-  },
-  {
-    path: 'profile-pets',
-    loadChildren: () => import('./pages/profiles/profile-pets/profile-pets.module')
-                        .then(m => m.ProfilePetsPageModule), 
-                        canActivate: [AuthGuard],
-                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
-  },
-  {
-    path: 'pay-information',
-    loadChildren: () => import('./pages/menu/pays/pay-information/pay-information.module')
-                        .then(m => m.PayInformationPageModule), 
-                        canActivate: [AuthGuard],
-                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
-  },
-  {
-    path: 'pay-information/:id',
-    loadChildren: () => import('./pages/menu/pays/pay-information/pay-information.module')
-                        .then(m => m.PayInformationPageModule), 
-                        canActivate: [AuthGuard],
-                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
-  },
-  {
-    path: 'pay-toggle',
-    loadChildren: () => import('./pages/menu/pays/pay-toggle/pay-toggle.module')
-                        .then(m => m.PayTogglePageModule), 
-                        canActivate: [AuthGuard],
-                        data: { AuthGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'more',

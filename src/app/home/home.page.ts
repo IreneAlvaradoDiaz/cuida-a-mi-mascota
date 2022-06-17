@@ -25,7 +25,6 @@ export class HomePage implements OnInit{
   adverts: Advert[] = [];
   advertRecent: Advert;
   advertFilter: Advert;
-  advertNear: Advert;
   advertOther: Advert[];
 
   constructor(public router: Router, private advertService: AdvertService, private userService: UserService, public authService: AuthService, private alertController: AlertController, private petService: PetService, private advertNotPremium: AdvertsNotPremiumService) {}
@@ -41,13 +40,11 @@ export class HomePage implements OnInit{
       this.adverts = data.sort((a1 , a2) => (- a1.create_At - (- a2.create_At)));
       
       if( this.adverts.length ) {
-        this.advertRecent = this.adverts[0]; // pedro
+        this.advertRecent = this.adverts[0];
 
         console.log(this.adverts);
         const filtered = this.adverts.filter(a => a.rate[0] >= 4);
         if( filtered.length ) this.advertFilter = filtered[Math.floor(Math.random()*(filtered.length - 1))];
-         
-        this.advertNear = this.adverts.sort((a1 , a2) => (- a1.create_At - (- a2.create_At)))[0];
       }
 
     }, err => console.error(err))

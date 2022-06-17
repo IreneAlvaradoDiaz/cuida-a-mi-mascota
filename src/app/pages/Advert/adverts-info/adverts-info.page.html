@@ -13,10 +13,10 @@
     <h1 class="title">¡Contáctame!</h1>
     <div class="options">
       <ion-grid fixed>
-        <!-- <ion-row> PROXIMAMENTE CHAT
+        <ion-row>
           <ion-col size="1"><ion-icon class="icon" name="chatbubble-ellipses-outline"></ion-icon></ion-col>
-          <ion-col size="11"><h1 style="color: var(--ion-color-tertiary); font-size: 40px;"> Mensaje</h1></ion-col>
-        </ion-row> -->
+          <ion-col size="11"><h1 style="color: var(--ion-color-tertiary); font-size: 40px;"><a href="https://api.whatsapp.com/send?phone={{this.telephoneUser}}"> WhatsApp</a></h1></ion-col>
+        </ion-row>
         <ion-row><!--Para poder acceder al número del usuario lo hice cogiéndolo de sus datos que están enlazados con los anuncios-->
           <ion-col size="1"><ion-icon class="icon" name="phone-portrait"></ion-icon></ion-col>
           <ion-col size="11"><h1 style="color: var(--ion-color-tertiary); font-size: 40px;" (click)="call(this.telephoneUser)"> Teléfono</h1></ion-col>

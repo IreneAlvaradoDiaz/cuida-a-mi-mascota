@@ -22,7 +22,6 @@ export class MorePage implements OnInit {
   ngOnInit() {
     this.advertService.getAllAdverts().then((data) => {
       this.adverts = data;
-      this.advertsNear = this.adverts.sort((a1 , a2) => (- a1.create_At - (- a2.create_At)));
       this.advertFilter = this.adverts.filter(a => a.rateAvg >= 4); 
     }, err => console.error(err))
 

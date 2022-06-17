@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   logout(){
-    signOut(this.auth);
+    this.auth.signOut();
   }
 
   register(email: string, pass: string): Promise<boolean> {

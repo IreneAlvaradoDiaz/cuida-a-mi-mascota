@@ -18,6 +18,7 @@ import { ComponentsModule } from './components/componets.module';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
+import { PayPal } from '@ionic-native/paypal/ngx';
 
 @NgModule({
   declarations: [AppComponent, MenuComponent],
@@ -33,7 +34,7 @@ import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
     provideFirestore(() => getFirestore()), 
     provideMessaging(() => getMessaging()), 
     provideStorage(() => getStorage())],
-  providers: [CallNumber, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [CallNumber, PayPal, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

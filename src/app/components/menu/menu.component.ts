@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-import { IUser } from 'src/app/model/iuser';
 import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,9 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public router: Router, private menu: MenuController, private authService: AuthService, private userService: UserService) { }
-
-  user: IUser = {} as IUser;
+  constructor(public router: Router, private menu: MenuController, private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -25,12 +21,6 @@ export class MenuComponent implements OnInit {
   }
   goPrivacity(){
     this.router.navigateByUrl('/privacity');
-  }
-  goLenguages(){
-    this.router.navigateByUrl('/lenguages');
-  }
-  goPayment(){
-    this.router.navigateByUrl('/pays');
   }
 
   goToProfile(){

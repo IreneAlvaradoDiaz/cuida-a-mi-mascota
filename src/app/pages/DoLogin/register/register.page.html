@@ -37,7 +37,7 @@
     </ion-select>
 
     <h2 class="ion-margin-start">Teléfono</h2>
-    <ion-input type="number" class="ion-margin-start" [(ngModel)]="user.telefono"></ion-input>
+    <ion-input type="number" class="ion-margin-start" [(ngModel)]="user.telefono" placeholder="Añadir prefijo sin separación. Ejem: 34654455545"></ion-input>
 
     <h2 class="ion-margin-start" *ngIf="!currentUser">Email</h2>
     <ion-input type="email" *ngIf="!currentUser" class="ion-margin-start" [(ngModel)]="user.email"></ion-input>

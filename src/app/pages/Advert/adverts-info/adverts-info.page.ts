@@ -3,11 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Advert } from 'src/app/model/advert';
 import { Comment } from 'src/app/model/comment';
-import { IUser } from 'src/app/model/iuser';
 import { AdvertService } from 'src/app/services/advert.service';
 import { CommentsService } from 'src/app/services/comments.service';
-import { UserService } from 'src/app/services/user.service';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
+import { PayPal, PayPalConfiguration, PayPalPayment, PayPalPaymentDetails } from '@ionic-native/paypal/ngx';
 
 @Component({
   selector: 'app-adverts-info',
@@ -20,10 +19,11 @@ export class AdvertsInfoPage implements OnInit {
   advert: Advert = {} as Advert
   comments: Comment[];
   telephoneUser: string = "";
-  constructor(private router: Router, private callNumber: CallNumber, private alertController: AlertController, private commentService: CommentsService, public advertService: AdvertService, private activatedRoute: ActivatedRoute) { }
-
   contact: boolean = false;
   telephone: string = "";
+  typeUser: string = "";
+
+  constructor(private router: Router, private payPal: PayPal, private callNumber: CallNumber, private alertController: AlertController, private commentService: CommentsService, public advertService: AdvertService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {    
     const id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -35,6 +35,7 @@ export class AdvertsInfoPage implements OnInit {
         if( data ){
           this.advert = data;
           this.telephoneUser = this.advert.nameUser.telefono;
+          this.typeUser = this.advert.nameUser.type;
         } else this.goToHome();
       }, err => console.error(err));
 
@@ -42,7 +43,6 @@ export class AdvertsInfoPage implements OnInit {
         this.comments = data;
       });
     }
-    
   }  
 
   openContact(){

@@ -3,23 +3,28 @@
     height: 40px;
     margin-left: -40px;
 }
+
 .ion-button{
     width: 58px;
     height: 58px;
     margin: -10px;
 }
+
 .title{
     font-size: 40px;
     font-weight: bolder;
 }
+
 u{
     text-decoration: none;
     border-bottom: 3px solid var(--ion-color-primary);
 }
+
 .foto{
-    height: 30vh;
+    height: 26vh;
     width: 70vw;
 }
+
 .ion-input{
     background-color: var(--ion-color-tertiary);
     border-radius: 15px;
@@ -27,6 +32,7 @@ u{
     margin: auto;
 
 }
+
 .description{
     background-color: var(--ion-color-tertiary);
     border-radius: 15px;
@@ -35,9 +41,22 @@ u{
     margin: auto;
     margin-bottom: 10px;
 }
+
+.location{
+    background-color: var(--ion-color-primary);
+    border-radius: 15px;
+    width: 80vw;
+    height: 4vh;
+    color: var(--ion-color-tertiary);
+    margin: auto;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
 ion-textarea{
     height: 50vh;
 }
+
 .price{
     width: 120px;
     color: white;
@@ -47,19 +66,22 @@ ion-textarea{
     float: right;
     border-radius: 10px;
     margin-right: 50px;
-    margin-top: 10px;
+    margin-top: 5px;
     background-color: var(--ion-color-primary);
 }
+
 .foto{
     background-color: #d7d7d98c;
     margin: auto;
     border-radius: 30px;
     box-shadow: 0.3em 0.1em 0.7em rgba(59, 56, 56, 0.3);
 }
+
 ion-slides{
     height: 300px;
     line-height: 250px
 }
+
 .addFoto{
     display: inline-block;
     line-height: 150px;
@@ -69,12 +91,14 @@ ion-slides{
     color: var(--ion-color-primary);
     font-family: 'Roboto' !important;
 }
+
 .btn{
     width: 150px;
     height: 40px;
     font-size: 20px;
     
 }
+
 .text{
     color: var(--ion-color-primary);
     font-family: 'Calistoga';
