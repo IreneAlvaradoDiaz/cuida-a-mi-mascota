@@ -23,21 +23,21 @@ Siendo Ionic la tecnología usada para su desarrollo.
 
 <img width="164" alt="image" src="https://user-images.githubusercontent.com/91321987/157540060-7159e3a1-d620-4b60-8eb7-a4162a436af8.png">             <img width="162" alt="image" src="https://user-images.githubusercontent.com/91321987/157540090-ee3d388a-c9f6-4985-8f74-bdb234ad3d9a.png">
 
-<img width="167" alt="image" src="https://user-images.githubusercontent.com/91321987/157540513-3286a83b-1799-4d0a-b1af-72929ab4b9ad.png">             <img width="166" alt="image" src="https://user-images.githubusercontent.com/91321987/157540542-eacde35a-c01e-40d4-9245-313b8a077adb.png">
 
 Link a figma: 
 https://www.figma.com/file/Jeaw5WQcTzZR0VBXKljMyi/Untitled?node-id=0%3A1 
+Link a figma Landing Page: 
+https://www.figma.com/file/C49l83tQrs57ARzJTlyw6y/Untitled?node-id=0%3A1
 
-APK: https://drive.google.com/file/d/1ii5MA7wIIwUB1GxdU9B-ZEULuXBvbIDM/view?usp=sharing
+Landing Page:
 
-Video: https://drive.google.com/file/d/15TagLSUIfJ-WKUXCBWPRnFTvFFtd4TBz/view?usp=sharing
+Angular(Administrador): https://github.com/IreneAlvaradoDiaz/AdmistracionApp.git
+
+APK + VIDEO: https://drive.google.com/drive/folders/1P4us94splpQGd5dfMfxaEZFq539PRPw8?usp=sharing
 
 Historico de cambios:<br>
  · Hacer que cuando le de a ¡Contáctame!, salga la opción de llamar al usuario que ha subido el anuncio, al darle, llamará a dicho usuario. El fichero modificado se encuentra en: Pages/Adverts/advert-info/advert-info.ts y en el advert-info.html
- 
- Cosas que me quedan por hacer:<br>
-  · Cambiar el rate, que sea con un for y no escrito a mano.<br>
-  · Hacer que se abra la app de android.
-  · Hacer el chat.<br>
-  · Meterle geolocalización.<br>
-  · Meter paypal y hacer opción de pago.<br>
+ · Añadir enlace con WhatsApp
+ · Modificar la parte del perfil del cuidador y el dueño.
+ · Ahora hay que añadir el prefijo al introducir el número de teléfono.
+ · Añadir a mano la localización del anuncio subido.
