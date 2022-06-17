@@ -26,10 +26,12 @@ Siendo Ionic la tecnología usada para su desarrollo.
 
 Link a figma: 
 https://www.figma.com/file/Jeaw5WQcTzZR0VBXKljMyi/Untitled?node-id=0%3A1 
+
 Link a figma Landing Page: 
 https://www.figma.com/file/C49l83tQrs57ARzJTlyw6y/Untitled?node-id=0%3A1
 
 Landing Page:
+https://github.com/IreneAlvaradoDiaz/LandingPage-CuidaAMiMascota.git
 
 Angular(Administrador): https://github.com/IreneAlvaradoDiaz/AdmistracionApp.git
 
