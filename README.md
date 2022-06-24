@@ -37,9 +37,11 @@ Angular(Administrador): https://github.com/IreneAlvaradoDiaz/AdmistracionApp.git
 
 APK + VIDEO + PDF: https://drive.google.com/drive/folders/1P4us94splpQGd5dfMfxaEZFq539PRPw8?usp=sharing
 
+Código Python: https://github.com/IreneAlvaradoDiaz/Cuida-a-mi-mascota-py.git
+
 Historico de cambios:<br>
- · Hacer que cuando le de a ¡Contáctame!, salga la opción de llamar al usuario que ha subido el anuncio, al darle, llamará a dicho usuario. El fichero modificado se encuentra en: Pages/Adverts/advert-info/advert-info.ts y en el advert-info.html
- · Añadir enlace con WhatsApp
- · Modificar la parte del perfil del cuidador y el dueño.
- · Ahora hay que añadir el prefijo al introducir el número de teléfono.
- · Añadir a mano la localización del anuncio subido.
+ · Hacer que cuando le de a ¡Contáctame!, salga la opción de llamar al usuario que ha subido el anuncio, al darle, llamará a dicho usuario. El fichero modificado se encuentra en: Pages/Adverts/advert-info/advert-info.ts y en el advert-info.html<br>
+ · Añadir enlace con WhatsApp<br>
+ · Modificar la parte del perfil del cuidador y el dueño.<br>
+ · Ahora hay que añadir el prefijo al introducir el número de teléfono.<br>
+ · Añadir a mano la localización del anuncio subido.<br>
